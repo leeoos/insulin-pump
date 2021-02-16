@@ -1,0 +1,3 @@
+assert            | debug   | Solving non-linear system 6 failed at time=0.
+|                 | |       | For more information please use -lv LOG_NLS.
+assert            | info    | simulation terminated by an assertion at initialization

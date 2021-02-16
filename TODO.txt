@@ -1,0 +1,11 @@
+TODO
+
+1) Da modificare i parameter della lungezza/frequenza pasto nel file mealgen.mo
+
+2) Da modificare i parametrer i valori relativi al paziente in rag.mo (da controllare corrispondenza nella tabella A1 con i nomi dei parametri)
+
+3) Da verificare se i parametri del paziente in fake-patient.mo sono fissi o possono variare da persona a persona
+
+4) Scrivere uno script python che gestisce la variazione dei parametri durante le simulazioni
+
+ 
