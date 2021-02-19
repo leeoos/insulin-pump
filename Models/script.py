@@ -15,6 +15,10 @@ print "removing old System (if any) ..."
 os.system("rm -f ./System")    # remove previous executable, if any.
 print "done!"
 
+counter_ok = 0
+counter_fail = 0
+counter_tot = 0
+
 for i1 in range (0,10):
 
     omc = OMCSessionZMQ()
@@ -110,18 +114,28 @@ for i1 in range (0,10):
     insulin = omc.sendExpression("val(pa.I, "+str(time)+", \"System_res.mat\")")
 
 
-    print "\nDelta: ", delta
+    #print "\nDelta: ", delta
+    print "\nSimulation", i1+1
     print "Ra_meal: ", ra_meal
     print "Glucose: ", glucose
     print "Insulin: ", insulin, "\n"
 
     fail = omc.sendExpression("val(pu.fail, 1000.0, \"System_res.mat\")")
 
-    if fail == True: print("Congratulation your patient is dead !!!")
-    else : print("He maked alive :(")
+    if fail == True: 
+        print("fail")
+        counter_fail = counter_fail + 1
+    else : 
+        print("pass")
+        counter_ok = counter_ok + 1
     
+counter_tot = counter_ok + counter_fail
 
+print "\nTotal number of tests: ", counter_tot
+print "Number of test passed: ", counter_ok
+print "Number5 of tests failed: ", counter_fail, "\n"
 
+ 
 #os.system("libreoffice --calc System_res.csv ./System")
 os.system("./clean.sh ./System") 
 

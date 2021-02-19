@@ -22,7 +22,7 @@ err = (glucose - ref);
 
 algorithm
 
-if(glucose >= 1000 or glucose <= 70) then
+if(glucose >= 150 or glucose <= 50) then
 
 fail := true;
 

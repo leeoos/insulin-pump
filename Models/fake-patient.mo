@@ -32,7 +32,7 @@ equation
 // FAKE PATIENT EQUATIONS!!! Just TO SHOW INTERFACING patient-pump  !!
 
   der(Ip) = -0.1*Ip + insulin_from_pump + 0.3*Gp;	
-  der(Gp)   = 20*Rameal - 0.1*Gp - 0.00001* I *Gp;
+  der(Gp)   = 20*Rameal - 0.1*Gp - 0.00001*I*Gp;  // Uii = 0.00001* I* Gp
 
 
 end Patient;
