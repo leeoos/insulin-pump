@@ -4,26 +4,27 @@ getErrorString();
 loadFile("connectors.mo");
 getErrorString();
 
-loadFile("inSilicoPatient.mo");
+loadFile("fake-patient.mo");
 getErrorString();
 
-loadFile("ra_meal.mo");
+loadFile("rag.mo");
 getErrorString();
 
-loadFile("pump.mo");
+loadFile("Pump.mo");
 getErrorString();
 
-loadFile("meal.mo");
+loadFile("mealgen.mo");
 getErrorString();
 
 loadFile("System.mo");
 getErrorString();
 
 //simulate(System, stopTime=3600, method="rungekutta");
-simulate(System, stopTime=10000);
+//simulate(System, stopTime=10000);
+simulate(System, stopTime=300);
 getErrorString();
 
-//plot({pa.glucose, pa.insuline, mf.status, mf2.status}, externalWindow=true);
+//plot({pa.G, pa.I, mf.status, mf2.status}, externalWindow=true);
 //plot({pa.G, pa.Rameal, pa.insulin_in, pa.I}, externalWindow=true);
-plot({patient.glucose, patient.ra_meal, patient.insulin_in}, externalWindow=true);
+plot({pa.G, pa.Rameal, pa.insulin_from_pump}, externalWindow=true);
 getErrorString();

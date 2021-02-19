@@ -1,0 +1,9 @@
+gen.Meal_length=62
+gen.Meal_period=391
+gen.gamma=15
+rag.K.b=0.745
+rag.K.d=0.1081
+rag.K.kmax=0.063
+rag.K.kmin=0.0067
+rag.K.kabs=0.0712
+rag.K.BW=95.13
