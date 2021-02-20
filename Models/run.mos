@@ -20,8 +20,8 @@ loadFile("System.mo");
 getErrorString();
 
 //simulate(System, stopTime=3600, method="rungekutta");
-//simulate(System, stopTime=10000);
-simulate(System, stopTime=300);
+simulate(System, stopTime=10000);
+//simulate(System, stopTime=300);
 getErrorString();
 
 //plot({pa.G, pa.I, mf.status, mf2.status}, externalWindow=true);

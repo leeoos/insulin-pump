@@ -4,7 +4,7 @@ OutputReal delta;
 
 parameter Real Meal_length = 60;  // lenght of meal (minutes) 
 parameter Real Meal_period = 480;  // periodic meals: every 8 hours.
-parameter Real gamma = 0;
+parameter Real gamma = 20;
 
 Boolean meal_on, meal_off;
 
