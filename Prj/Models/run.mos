@@ -26,5 +26,7 @@ getErrorString();
 
 //plot({pa.G, pa.I, mf.status, mf2.status}, externalWindow=true);
 //plot({pa.G, pa.Rameal, pa.insulin_in, pa.I}, externalWindow=true);
-plot({pa.G, pa.Rameal, pa.insulin_from_pump}, externalWindow=true);
+//plot({pa.G, pa.Rameal, pa.insulin_from_pump}, externalWindow=true);
+//plot({gen.meal_on, gen.meal_off, gen.delta}, externalWindow=true);
+plot({pa.G, pu.insulin_out, pu.z}, externalWindow=true);
 getErrorString();

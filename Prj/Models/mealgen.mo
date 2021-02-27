@@ -3,8 +3,8 @@ block MealGenerator
 OutputReal delta;
 
 parameter Real Meal_length = 60;  // lenght of meal (minutes) 
-parameter Real Meal_period = 480;  // periodic meals: every 8 hours.
-parameter Real gamma = 20;
+parameter Real Meal_period = 240;  // periodic meals: every 4 hours.
+parameter Real gamma = 100;          // 
 
 Boolean meal_on, meal_off;
 
