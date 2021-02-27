@@ -20,8 +20,10 @@ counter_fail = 0
 counter_tot = 0
 step_a = 1.6*300;          # original value 1.0
 step_b = 0.003*300;  # original value 0.001
+Tot = 0
+media = 0
 
-for i0 in range (0, 3):
+for i0 in range (0, 100):
 
     print "Patient ", i0, "\n"
 
@@ -92,57 +94,21 @@ for i0 in range (0, 3):
         #delta = omc.sendExpression("val(gen.delta, "+str(float(i2))+", \"System_res.mat\")")
         #ra_meal = omc.sendExpression("val(rag.Rameal, "+str(float(i2))+", \"System_res.mat\")")
         glucose = omc.sendExpression("val(pa.G, "+str(float(i2))+", \"System_res.mat\")")
-        insulin_out = omc.sendExpression("val(pu.insulin_out, "+str(float(i2))+", \"System_res.mat\")")
+        #insulin_out = omc.sendExpression("val(pu.insulin_out, "+str(float(i2))+", \"System_res.mat\")")
         
         if (i2 != 0 ): 
-            print "\nglucosio: ", glucose
+            #print "\nglucosio: ", glucose
             sum_g = sum_g + glucose
             if (glucose > max_g): max_g = glucose
             if (glucose < min_g): min_g = glucose
-            if (glucose > max_i): max_i = insulin_out
-            if (glucose < min_i): min_i = insulin_out
+            #if (insulin_out > max_i): max_i = insulin_out
+            #if (insulin_out < min_i): min_i = insulin_out
             #print "\nDelta: ", delta
         #print "Ra_meal: ", ra_meal
         #print "Glucose: ", glucose
         #print "Insulin: ", insulin, "\n"
 
-    '''
-    print "\nMeal length: ", rand_meal_len
-    print "Meal_period: ", rand_meal_period
-    print "rand_b: ", rand_b
-    print "rand_d: ", rand_d
-    print "rand_kmax: ", rand_kmax
-    print "rand_kmin: ", rand_kmin
-    print "rand_kabs: ", rand_kabs
-    print "rand_BW: ", rand_BW, "\n"
 
-    b = omc.sendExpression("val(rag.K.b, 1000, \"System_res.mat\")")
-    d = omc.sendExpression("val(rag.K.d, 1000, \"System_res.mat\")")
-    kmax = omc.sendExpression("val(rag.K.kmax, 1000, \"System_res.mat\")")
-    kmin = omc.sendExpression("val(rag.K.kmin, 1000, \"System_res.mat\")")
-    kabs = omc.sendExpression("val(rag.K.kabs, 1000, \"System_res.mat\")")
-    BW = omc.sendExpression("val(rag.K.BW, 1000, \"System_res.mat\")")
-
-    print "\nb: ", b
-    print "d: ", d
-    print "kmax: ", kmax
-    print "kmin: ", kmin
-    print "kabs: ", kabs
-    print "BW: ", BW, "\n"
-    
-
-    delta = omc.sendExpression("val(gen.delta, "+str(time)+", \"System_res.mat\")")
-    ra_meal = omc.sendExpression("val(rag.Rameal, "+str(time)+", \"System_res.mat\")")
-    glucose = omc.sendExpression("val(pa.G, "+str(time)+", \"System_res.mat\")")
-    insulin = omc.sendExpression("val(pa.I, "+str(time)+", \"System_res.mat\")")
-
-
-    #print "\nDelta: ", delta
-    print "\nSimulation", i1+1
-    print "Ra_meal: ", ra_meal
-    print "Glucose: ", glucose
-    print "Insulin: ", insulin, "\n"
-    '''
     #Vg = omc.sendExpression("val(pa.Vg, "+str(float(time))+", \"System_res.mat\")")
     #Vi = omc.sendExpression("val(pa.Vi, "+str(float(time))+", \"System_res.mat\")")
     
@@ -153,6 +119,8 @@ for i0 in range (0, 3):
     print "min insulin: ", min_i
     print "max insulin: ", max_i
     print "average glucose: ", media
+    
+    Tot = Tot + media
 
     fail = omc.sendExpression("val(pu.fail,"+str(float(time))+", \"System_res.mat\")")
 
@@ -166,7 +134,7 @@ for i0 in range (0, 3):
     print "------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
     
 counter_tot = counter_ok + counter_fail
-
+print "\n Global Average of glucose: ", Tot / counter_tot
 print "\nTotal number of tests: ", counter_tot
 print "Number of test passed: ", counter_ok
 print "Number of tests failed: ", counter_fail, "\n"

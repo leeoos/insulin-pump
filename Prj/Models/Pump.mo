@@ -22,11 +22,15 @@ err = (glucose - ref);      //differenza tra glucosio ideale e glucosio attuale
 
 algorithm
 
+when sample(15, T) then 
+
 if(glucose >= 250 or glucose <= 75) then
 
 fail := true;
 
 end if;
+
+end when;
 
 when sample(0, T) then
 
