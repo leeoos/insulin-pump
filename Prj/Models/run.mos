@@ -16,17 +16,25 @@ getErrorString();
 loadFile("mealgen.mo");
 getErrorString();
 
+loadFile("monitor_pump.mo");
+getErrorString();
+
+loadFile("monitor_average.mo");
+getErrorString();
+
 loadFile("System.mo");
 getErrorString();
 
-//simulate(System, stopTime=3600, method="rungekutta");
-simulate(System, stopTime=10000);
-//simulate(System, stopTime=300);
+simulate(System, stopTime=1000, method="rungekutta");
+//simulate(System, stopTime=3600);
+//simulate(System, stopTime=10000);
 getErrorString();
 
 //plot({pa.G, pa.I, mf.status, mf2.status}, externalWindow=true);
 //plot({pa.G, pa.Rameal, pa.insulin_in, pa.I}, externalWindow=true);
 //plot({pa.G, pa.Rameal, pa.insulin_from_pump}, externalWindow=true);
 //plot({gen.meal_on, gen.meal_off, gen.delta}, externalWindow=true);
-plot({pa.G, pu.insulin_out, pu.z}, externalWindow=true);
+//plot({pa.G, pa.I}, externalWindow=true);
+plot({pa.G, pu_co.glucose_from_patient, mo_av.average}, externalWindow=true);
+
 getErrorString();
