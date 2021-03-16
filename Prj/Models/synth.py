@@ -9,7 +9,7 @@ import random
 
 from OMPython import OMCSessionZMQ
 
-print "removing old System (if any) ..."
+print "\nremoving old System (if any) ..."
 os.system("rm -f ./System")    # remove previous executable, if any.
 print "done!\n"
 
