@@ -1,0 +1,27 @@
+a += 20
+b -= 0.1
+
+Global Average of glucose:  2000.82442678 
+
+Best value of insuline out:  439058.57017 at simulation:  14 with values: 
+a =  1300.0
+b =  0.65
+glucose =  99.9098563782 
+
+
+
+Global Average of glucose:  2000.2637861 
+
+Best value of insuline out:  508611.30904 at simulation:  8 with values: 
+a =  1180.0
+b =  1.25
+glucose =  100.184532705 
+
+
+Global Average of glucose:  2000.59523445 
+
+Best value of insuline out:  495060.781815 at simulation:  19 with values: 
+a =  1400.0
+b =  0.15
+glucose =  99.5180604058 
+

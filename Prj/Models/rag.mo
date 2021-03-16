@@ -1,6 +1,6 @@
 
 record KPar "system parameters"
-parameter Real Dose=105;        //maybe fixed ?
+parameter Real Dose=105;       
 parameter Real b=0.7328;
 parameter Real d=0.1014;
 parameter Real kmax=0.0426 ;
@@ -53,7 +53,7 @@ der(Qsto1) =(-K.kmax)*Qsto1 + K.Dose*delta;
 
 der(Qsto2) = - k_empt(K, Qsto)*Qsto2 + K.kmax*Qsto1;
 
-der(Qgut) =(-K.kabs)*Qgut +k_empt(K, Qsto)*Qsto2;
+der(Qgut) = (-K.kabs)*Qgut +k_empt(K, Qsto)*Qsto2;
 
 Rameal = (K.f*K.kabs*Qgut)/K.BW;
 

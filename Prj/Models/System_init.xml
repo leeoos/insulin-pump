@@ -1,0 +1,778 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+
+<!-- description of the model interface using an extention of the FMI standard -->
+<fmiModelDescription
+  fmiVersion                          = "1.0"
+
+  modelName                           = "System"
+  modelIdentifier                     = "System"
+
+  OPENMODELICAHOME                    = "/usr/bin/.."
+
+  guid                                = "{8bfc621c-a0f4-42a8-92cd-7b249f946605}"
+
+  description                         = ""
+  generationTool                      = "OpenModelica Compiler OpenModelica 1.17.0~dev.beta3-2-g248842f"
+  generationDateAndTime               = "2021-03-16T20:04:25Z"
+
+  variableNamingConvention            = "structured"
+
+  numberOfEventIndicators             = "0"  cmt_numberOfEventIndicators             = "NG:       number of zero crossings,                           FMI"
+  numberOfTimeEvents                  = "5"  cmt_numberOfTimeEvents                  = "NG_SAM:   number of zero crossings that are samples,          OMC"
+
+  numberOfInputVariables              = "0"  cmt_numberOfInputVariables              = "NI:       number of inputvar on topmodel,                     OMC"
+  numberOfOutputVariables             = "0"  cmt_numberOfOutputVariables             = "NO:       number of outputvar on topmodel,                    OMC"
+
+  numberOfExternalObjects             = "0"  cmt_numberOfExternalObjects             = "NEXT:     number of external objects,                         OMC"
+  numberOfFunctions                   = "2"  cmt_numberOfFunctions                   = "NFUNC:    number of functions used by the simulation,         OMC"
+
+  numberOfContinuousStates            = "5"  cmt_numberOfContinuousStates            = "NX:       number of states,                                   FMI"
+  numberOfRealAlgebraicVariables      = "14"  cmt_numberOfRealAlgebraicVariables      = "NY:       number of real variables,                           OMC"
+  numberOfRealAlgebraicAliasVariables = "6"  cmt_numberOfRealAlgebraicAliasVariables = "NA:       number of alias variables,                          OMC"
+  numberOfRealParameters              = "22"  cmt_numberOfRealParameters              = "NP:       number of parameters,                               OMC"
+
+  numberOfIntegerAlgebraicVariables   = "0"  cmt_numberOfIntegerAlgebraicVariables   = "NYINT:    number of alg. int variables,                       OMC"
+  numberOfIntegerAliasVariables       = "0"  cmt_numberOfIntegerAliasVariables       = "NAINT:    number of alias int variables,                      OMC"
+  numberOfIntegerParameters           = "0"  cmt_numberOfIntegerParameters           = "NPINT:    number of int parameters,                           OMC"
+
+  numberOfStringAlgebraicVariables    = "0"  cmt_numberOfStringAlgebraicVariables    = "NYSTR:    number of alg. string variables,                    OMC"
+  numberOfStringAliasVariables        = "0"  cmt_numberOfStringAliasVariables        = "NASTR:    number of alias string variables,                   OMC"
+  numberOfStringParameters            = "0"  cmt_numberOfStringParameters            = "NPSTR:    number of string parameters,                        OMC"
+
+  numberOfBooleanAlgebraicVariables   = "12"  cmt_numberOfBooleanAlgebraicVariables   = "NYBOOL:   number of alg. bool variables,                      OMC"
+  numberOfBooleanAliasVariables       = "0"  cmt_numberOfBooleanAliasVariables       = "NABOOL:   number of alias bool variables,                     OMC"
+  numberOfBooleanParameters           = "0"  cmt_numberOfBooleanParameters           = "NPBOOL:   number of bool parameters,                          OMC" >
+
+
+  <!-- startTime, stopTime, tolerance are FMI specific, all others are OMC specific -->
+  <DefaultExperiment
+    startTime      = "0"
+    stopTime       = "1000"
+    stepSize       = "2"
+    tolerance      = "1e-06"
+    solver        = "dassl"
+    outputFormat      = "mat"
+    variableFilter      = ".*" />
+
+  <!-- variables in the model -->
+  <ModelVariables>
+
+  <ScalarVariable
+    name = "pa.Gp"
+    valueReference = "1000"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "0" classType = "rSta"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/fake-patient.mo" startLine = "8" startColumn = "1" endLine = "8" endColumn = "8" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pa.Ip"
+    valueReference = "1001"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "1" classType = "rSta"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/fake-patient.mo" startLine = "9" startColumn = "1" endLine = "9" endColumn = "8" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "rag.Qgut"
+    valueReference = "1002"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "2" classType = "rSta"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/rag.mo" startLine = "44" startColumn = "1" endLine = "44" endColumn = "19" fileWritable = "true">
+    <Real start="0.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "rag.Qsto1"
+    valueReference = "1003"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "3" classType = "rSta"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/rag.mo" startLine = "42" startColumn = "1" endLine = "42" endColumn = "20" fileWritable = "true">
+    <Real start="0.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "rag.Qsto2"
+    valueReference = "1004"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "4" classType = "rSta"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/rag.mo" startLine = "43" startColumn = "1" endLine = "43" endColumn = "20" fileWritable = "true">
+    <Real start="0.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "der(pa.Gp)"
+    valueReference = "1005"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "0" classType = "rDer"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/fake-patient.mo" startLine = "8" startColumn = "1" endLine = "8" endColumn = "8" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "der(pa.Ip)"
+    valueReference = "1006"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "1" classType = "rDer"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/fake-patient.mo" startLine = "9" startColumn = "1" endLine = "9" endColumn = "8" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "der(rag.Qgut)"
+    valueReference = "1007"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "2" classType = "rDer"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/rag.mo" startLine = "44" startColumn = "1" endLine = "44" endColumn = "19" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "der(rag.Qsto1)"
+    valueReference = "1008"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "3" classType = "rDer"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/rag.mo" startLine = "42" startColumn = "1" endLine = "42" endColumn = "20" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "der(rag.Qsto2)"
+    valueReference = "1009"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "4" classType = "rDer"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/rag.mo" startLine = "43" startColumn = "1" endLine = "43" endColumn = "20" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "$cse1"
+    valueReference = "1010"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "0" classType = "rAlg"
+    isProtected = "true" hideResult = "true"
+    fileName = "" startLine = "0" startColumn = "0" endLine = "0" endColumn = "0" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pa.G"
+    valueReference = "1011"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "1" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/fake-patient.mo" startLine = "6" startColumn = "1" endLine = "6" endColumn = "13" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pa.I"
+    valueReference = "1012"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "2" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/fake-patient.mo" startLine = "10" startColumn = "1" endLine = "10" endColumn = "7" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pu.err"
+    valueReference = "1013"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "3" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/Pump.mo" startLine = "7" startColumn = "1" endLine = "7" endColumn = "12" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "rag.Qsto"
+    valueReference = "1014"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "4" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/rag.mo" startLine = "41" startColumn = "1" endLine = "41" endColumn = "19" fileWritable = "true">
+    <Real start="0.0" fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "rag.Rameal"
+    valueReference = "1015"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "5" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/rag.mo" startLine = "37" startColumn = "1" endLine = "37" endColumn = "18" fileWritable = "true">
+    <Real start="0.0" fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "gen.delta"
+    valueReference = "1016"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "6" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/mealgen.mo" startLine = "3" startColumn = "1" endLine = "3" endColumn = "17" fileWritable = "true">
+    <Real fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "mo_av.average"
+    valueReference = "1017"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "7" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/monitor_average.mo" startLine = "7" startColumn = "1" endLine = "7" endColumn = "19" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "mo_av.max_g"
+    valueReference = "1018"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "8" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/monitor_average.mo" startLine = "6" startColumn = "1" endLine = "6" endColumn = "17" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "mo_av.min_g"
+    valueReference = "1019"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "9" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/monitor_average.mo" startLine = "5" startColumn = "1" endLine = "5" endColumn = "17" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "mo_av.num_values"
+    valueReference = "1020"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "10" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/monitor_average.mo" startLine = "12" startColumn = "1" endLine = "12" endColumn = "26" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "mo_av.sim_step"
+    valueReference = "1021"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "11" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/monitor_average.mo" startLine = "12" startColumn = "1" endLine = "12" endColumn = "26" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pu.insulin_out"
+    valueReference = "1022"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "12" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/Pump.mo" startLine = "5" startColumn = "1" endLine = "5" endColumn = "23" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pu.z"
+    valueReference = "1023"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "13" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/Pump.mo" startLine = "7" startColumn = "1" endLine = "7" endColumn = "12" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "gen.Meal_length"
+    valueReference = "1024"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "0" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/mealgen.mo" startLine = "5" startColumn = "1" endLine = "5" endColumn = "32" fileWritable = "true">
+    <Real start="60.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "gen.Meal_period"
+    valueReference = "1025"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "1" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/mealgen.mo" startLine = "6" startColumn = "1" endLine = "6" endColumn = "33" fileWritable = "true">
+    <Real start="240.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "gen.par_delta"
+    valueReference = "1026"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "2" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/mealgen.mo" startLine = "7" startColumn = "1" endLine = "7" endColumn = "31" fileWritable = "true">
+    <Real start="100.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "mo_av.T"
+    valueReference = "1027"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "3" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/monitor_average.mo" startLine = "13" startColumn = "1" endLine = "13" endColumn = "23" fileWritable = "true">
+    <Real start="0.1" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "mo_av.stop_simulation"
+    valueReference = "1028"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "4" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/monitor_average.mo" startLine = "14" startColumn = "1" endLine = "14" endColumn = "38" fileWritable = "true">
+    <Real start="1000.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pa.Gb"
+    valueReference = "1029"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "5" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/fake-patient.mo" startLine = "12" startColumn = "1" endLine = "12" endColumn = "24" fileWritable = "true">
+    <Real start="127.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pa.Ib"
+    valueReference = "1030"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "6" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/fake-patient.mo" startLine = "13" startColumn = "1" endLine = "13" endColumn = "23" fileWritable = "true">
+    <Real start="54.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pa.Vg"
+    valueReference = "1031"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "7" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/fake-patient.mo" startLine = "14" startColumn = "1" endLine = "14" endColumn = "22" fileWritable = "true">
+    <Real start="1.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pa.Vi"
+    valueReference = "1032"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "8" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/fake-patient.mo" startLine = "15" startColumn = "1" endLine = "15" endColumn = "26" fileWritable = "true">
+    <Real start="0.041" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pu.T"
+    valueReference = "1033"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "9" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/Pump.mo" startLine = "9" startColumn = "1" endLine = "9" endColumn = "23" fileWritable = "true">
+    <Real start="0.1" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pu.a"
+    valueReference = "1034"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "10" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/Pump.mo" startLine = "10" startColumn = "1" endLine = "10" endColumn = "26" fileWritable = "true">
+    <Real start="1040.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pu.b"
+    valueReference = "1035"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "11" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/Pump.mo" startLine = "11" startColumn = "1" endLine = "11" endColumn = "24" fileWritable = "true">
+    <Real start="1.95" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pu.ref"
+    valueReference = "1036"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "12" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/Pump.mo" startLine = "12" startColumn = "1" endLine = "12" endColumn = "25" fileWritable = "true">
+    <Real start="100.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pu_co.T"
+    valueReference = "1037"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "13" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/monitor_pump.mo" startLine = "7" startColumn = "1" endLine = "7" endColumn = "23" fileWritable = "true">
+    <Real start="0.1" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "rag.K.BW"
+    valueReference = "1038"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "14" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/rag.mo" startLine = "9" startColumn = "1" endLine = "9" endColumn = "21" fileWritable = "true">
+    <Real start="96.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "rag.K.Dose"
+    valueReference = "1039"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "15" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/rag.mo" startLine = "3" startColumn = "1" endLine = "3" endColumn = "24" fileWritable = "true">
+    <Real start="105.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "rag.K.b"
+    valueReference = "1040"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "16" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/rag.mo" startLine = "4" startColumn = "1" endLine = "4" endColumn = "24" fileWritable = "true">
+    <Real start="0.7328" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "rag.K.d"
+    valueReference = "1041"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "17" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/rag.mo" startLine = "5" startColumn = "1" endLine = "5" endColumn = "24" fileWritable = "true">
+    <Real start="0.1014" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "rag.K.f"
+    valueReference = "1042"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "18" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/rag.mo" startLine = "10" startColumn = "1" endLine = "10" endColumn = "21" fileWritable = "true">
+    <Real start="0.9" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "rag.K.kabs"
+    valueReference = "1043"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "19" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/rag.mo" startLine = "8" startColumn = "1" endLine = "8" endColumn = "28" fileWritable = "true">
+    <Real start="0.0542" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "rag.K.kmax"
+    valueReference = "1044"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "20" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/rag.mo" startLine = "6" startColumn = "1" endLine = "6" endColumn = "28" fileWritable = "true">
+    <Real start="0.0426" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "rag.K.kmin"
+    valueReference = "1045"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "21" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/rag.mo" startLine = "7" startColumn = "1" endLine = "7" endColumn = "28" fileWritable = "true">
+    <Real start="0.0076" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "mo_av.glucose_from_patient"
+    valueReference = "1046"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "alias" aliasVariable="pa.G" aliasVariableId="11"
+    classIndex = "0" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/monitor_average.mo" startLine = "3" startColumn = "1" endLine = "3" endColumn = "31" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pa.Rameal"
+    valueReference = "1047"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "alias" aliasVariable="rag.Rameal" aliasVariableId="15"
+    classIndex = "1" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/fake-patient.mo" startLine = "3" startColumn = "1" endLine = "3" endColumn = "17" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pa.insulin_from_pump"
+    valueReference = "1048"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "alias" aliasVariable="pu.insulin_out" aliasVariableId="22"
+    classIndex = "2" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/fake-patient.mo" startLine = "4" startColumn = "1" endLine = "4" endColumn = "28" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pu.glucose"
+    valueReference = "1049"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "alias" aliasVariable="pa.G" aliasVariableId="11"
+    classIndex = "3" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/Pump.mo" startLine = "4" startColumn = "1" endLine = "4" endColumn = "18" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pu_co.glucose_from_patient"
+    valueReference = "1050"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "alias" aliasVariable="pa.G" aliasVariableId="11"
+    classIndex = "4" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/monitor_pump.mo" startLine = "4" startColumn = "1" endLine = "4" endColumn = "31" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "rag.delta"
+    valueReference = "1051"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "alias" aliasVariable="gen.delta" aliasVariableId="16"
+    classIndex = "5" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/rag.mo" startLine = "36" startColumn = "1" endLine = "36" endColumn = "16" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "$whenCondition1"
+    valueReference = "1052"
+    description = "sample(4, 0.0, 0.5 * gen.Meal_period)"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "0" classType = "bAlg"
+    isProtected = "true" hideResult = "true"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/mealgen.mo" startLine = "20" startColumn = "1" endLine = "20" endColumn = "28" fileWritable = "true">
+    <Boolean start="true" fixed="true" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "$whenCondition2"
+    valueReference = "1053"
+    description = "sample(5, gen.Meal_length, 0.5 * gen.Meal_period)"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "1" classType = "bAlg"
+    isProtected = "true" hideResult = "true"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/mealgen.mo" startLine = "24" startColumn = "1" endLine = "24" endColumn = "30" fileWritable = "true">
+    <Boolean fixed="true" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "$whenCondition3"
+    valueReference = "1054"
+    description = "gen.meal_off and not pre(gen.meal_off)"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "2" classType = "bAlg"
+    isProtected = "true" hideResult = "true"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/mealgen.mo" startLine = "28" startColumn = "1" endLine = "28" endColumn = "18" fileWritable = "true">
+    <Boolean fixed="true" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "$whenCondition4"
+    valueReference = "1055"
+    description = "gen.meal_on and not pre(gen.meal_on)"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "3" classType = "bAlg"
+    isProtected = "true" hideResult = "true"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/mealgen.mo" startLine = "28" startColumn = "1" endLine = "28" endColumn = "18" fileWritable = "true">
+    <Boolean fixed="true" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "$whenCondition5"
+    valueReference = "1056"
+    description = "sample(3, 100.0, mo_av.T)"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "4" classType = "bAlg"
+    isProtected = "true" hideResult = "true"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/monitor_average.mo" startLine = "27" startColumn = "1" endLine = "54" endColumn = "9" fileWritable = "true">
+    <Boolean fixed="true" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "$whenCondition6"
+    valueReference = "1057"
+    description = "sample(2, 100.0, pu_co.T)"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "5" classType = "bAlg"
+    isProtected = "true" hideResult = "true"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/monitor_pump.mo" startLine = "14" startColumn = "1" endLine = "22" endColumn = "9" fileWritable = "true">
+    <Boolean fixed="true" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "$whenCondition7"
+    valueReference = "1058"
+    description = "sample(1, 0.0, pu.T)"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "6" classType = "bAlg"
+    isProtected = "true" hideResult = "true"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/Pump.mo" startLine = "23" startColumn = "1" endLine = "30" endColumn = "9" fileWritable = "true">
+    <Boolean fixed="true" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "gen.meal_off"
+    valueReference = "1059"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "7" classType = "bAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/mealgen.mo" startLine = "9" startColumn = "1" endLine = "9" endColumn = "26" fileWritable = "true">
+    <Boolean fixed="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "gen.meal_on"
+    valueReference = "1060"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "8" classType = "bAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/mealgen.mo" startLine = "9" startColumn = "1" endLine = "9" endColumn = "26" fileWritable = "true">
+    <Boolean fixed="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "mo_av.high_average"
+    valueReference = "1061"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "9" classType = "bAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/monitor_average.mo" startLine = "9" startColumn = "1" endLine = "9" endColumn = "24" fileWritable = "true">
+    <Boolean fixed="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "mo_av.low_average"
+    valueReference = "1062"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "10" classType = "bAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/monitor_average.mo" startLine = "8" startColumn = "1" endLine = "8" endColumn = "23" fileWritable = "true">
+    <Boolean fixed="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "pu_co.controller"
+    valueReference = "1063"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "11" classType = "bAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/leeoos/Projects/Modelica/Insulin-Pump/Prj/Models/monitor_pump.mo" startLine = "5" startColumn = "1" endLine = "5" endColumn = "22" fileWritable = "true">
+    <Boolean fixed="false" />
+  </ScalarVariable>
+
+
+
+  </ModelVariables>
+
+
+</fmiModelDescription>
+

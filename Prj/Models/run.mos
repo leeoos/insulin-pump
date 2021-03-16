@@ -34,7 +34,9 @@ getErrorString();
 //plot({pa.G, pa.Rameal, pa.insulin_in, pa.I}, externalWindow=true);
 //plot({pa.G, pa.Rameal, pa.insulin_from_pump}, externalWindow=true);
 //plot({gen.meal_on, gen.meal_off, gen.delta}, externalWindow=true);
-//plot({pa.G, pa.I}, externalWindow=true);
-plot({pa.G, pu_co.glucose_from_patient, mo_av.average}, externalWindow=true);
+plot({pa.G}, externalWindow=true);
+//plot({pa.G,pa.insulin_from_pump, mo_av.average}, externalWindow=true);
+//plot({pa.G, pa.I, gen.delta, mo_av.min_g}, externalWindow=true);
+
 
 getErrorString();
