@@ -11,9 +11,9 @@ controller = false;
 
 algorithm 
 
-when sample(100, T) then 
+when sample(1000, T) then 
 
-if(glucose_from_patient >= 150 or glucose_from_patient <= 40) then // >=200 or <=40
+if(glucose_from_patient >= 150 or glucose_from_patient <= 39.8) then // >=200 or <=40
 
 controller := true;
 

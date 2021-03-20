@@ -35,4 +35,4 @@ equation
   der(Gp) = 20*Rameal - 0.1*Gp - 0.00001*I*Gp;      //insuline from pump 
 
 
-end Patient;     
+end Patient;      

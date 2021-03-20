@@ -25,18 +25,15 @@ getErrorString();
 loadFile("System.mo");
 getErrorString();
 
-simulate(System, stopTime=1000, method="rungekutta");
+simulate(System, stopTime=1500, method="rungekutta");
 //simulate(System, stopTime=3600);
 //simulate(System, stopTime=10000);
 getErrorString();
 
-//plot({pa.G, pa.I, mf.status, mf2.status}, externalWindow=true);
-//plot({pa.G, pa.Rameal, pa.insulin_in, pa.I}, externalWindow=true);
-//plot({pa.G, pa.Rameal, pa.insulin_from_pump}, externalWindow=true);
-//plot({gen.meal_on, gen.meal_off, gen.delta}, externalWindow=true);
-plot({pa.G}, externalWindow=true);
-//plot({pa.G,pa.insulin_from_pump, mo_av.average}, externalWindow=true);
-//plot({pa.G, pa.I, gen.delta, mo_av.min_g}, externalWindow=true);
+
+//plot({pa.G, gen.meal_off, gen.meal_on, gen.delta, gen.i, gen.j}, externalWindow=true);
+plot({pa.G, mo_av.min_g_control, mo_av.tmp_min, gen.delta}, externalWindow=true);
+
 
 
 getErrorString();

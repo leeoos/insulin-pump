@@ -24,8 +24,8 @@ when sample(0, T) then
 
 z := pre(z) + T*err;
 
-
 insulin_out := max(0, a*err + b*pre(z));
+
 
 end when;
 
