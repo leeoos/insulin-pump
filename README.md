@@ -1,13 +1,25 @@
 # Insulin-Pump
 
-#spostare cose in monitor_hipogli
+Modifiche da Verificare:
 
-#sistemare synth.py
+- Ho modificato a, b in pump e script
 
-#rimuovere cose inutili
+- Ho modificato Ib in fake-patient
 
-#mettere commenti in modelica+python
+- Ho modificato sim_step2 e tempo di controllo da 100 a 0 in monitor_average
 
-#fare documento
+- Ho modificato l'inizio del controllo in monitor_average e monitor_pump da 1000 a 400
+
+Cose da fare:
+
+- spostare cose in monitor_hipogli
+
+- sistemare synth.py
+
+- rimuovere cose inutili
+
+- mettere commenti in modelica+python
+
+- fare documento
 
 

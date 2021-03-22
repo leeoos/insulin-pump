@@ -10,7 +10,7 @@ Real Ip;
 Real I;
 
 parameter Real Gb = 127;
-parameter Real Ib = 54;
+parameter Real Ib = -111111; //54;
 parameter Real Vg = 1;
 parameter Real Vi = 0.041;
 

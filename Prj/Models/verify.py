@@ -21,8 +21,8 @@ counter_ok = 0
 counter_fail = 0
 counter_tot = 0
 
-a =  1040.0        # original value 1.0
-b =  1.95          # original value 0.001
+a =  280.0 #1040.0        # original value 1.0
+b =  1.0 #1.95          # original value 0.001
 i = 0
 
 start_time = time.time()
@@ -162,8 +162,7 @@ counter_tot = counter_ok + counter_fail
 print "\nGlobal Average of glucose: ", Global_Average/counter_tot
 print "\nTotal number of tests: ", counter_tot
 print "Number of test passed: ", counter_ok
-print "Number of tests failed: ", counter_fail
-print "Number of anomalus patients: ", anomalus_pat, "\n"
+print "Number of tests failed: ", counter_fail,"\n"
 
 print "--- %s seconds ---" % (time.time() - start_time), "\n"
  

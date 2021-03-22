@@ -89,16 +89,9 @@ meal_off = not(pre(meal_off));
 end when;
 
 when edge(meal_on) then
-
-//if (meal_control) then
-//delta = par_delta+60;
-//else
 delta = 100;
-//end if;
-
 elsewhen edge(meal_off) then
 delta = 0;
-
 end when;
 
 */

@@ -23,12 +23,12 @@ average = 0;
 low_average = false;
 high_average = false;
 sim_step = 0;
-sim_step2 = 100;
+sim_step2 = 0; //100;
 num_values = 0;
 
 algorithm
 
-when sample(100, T) then
+when sample(0, T) then
 
 if(sim_step2 == 4000) then
 
@@ -47,7 +47,7 @@ sim_step2 := sim_step2 + 1;
 end when;
 
 
-when sample(1000, T) then 
+when sample(400, T) then 
 
 if(glucose_from_patient < min_g ) then
 min_g := glucose_from_patient;
