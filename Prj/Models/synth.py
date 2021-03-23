@@ -6,6 +6,8 @@ import time
 import os.path
 import random
 
+from color import pretty, prettyln
+
 
 from OMPython import OMCSessionZMQ
 
@@ -15,8 +17,8 @@ print "done!\n"
 
 sim_time = 2000
 
-a = 1040.0 #280.0        # original value 1.0
-b = 1.95 #1.0        # original value 0.001
+a = 280 #1040.0 #280.0           # original value 1.0
+b = 1 #1.95 #1.0               # original value 0.001
 
 Global_Average = 0
 insulin_out_min = float("inf")          # max value
@@ -29,9 +31,6 @@ i = 1
 start_time = time.time()
 
 #Patient generation
-    
-exit_ctrl = False
-fail_pump = False
 
 rand_b= round(random.uniform(0.5841, 0.8282),4)         # original value 0.7328
 rand_d= round(random.uniform(0.061, 0.1436),4)          # original value 0.1014
@@ -40,16 +39,69 @@ rand_kmin= round(random.uniform(0.0066, 0.01),4)        # original value 0.0076
 rand_kabs= round(random.uniform(0.0293, 0.1),4)         # original value 0.0542 
 rand_BW= round(random.uniform(83.0, 104.0),2)           # original value 96
 
-#rand_meal_len = random.randint(60,120)
+rand_meal_len = random.randint(600, 700)
 #rand_meal_period = random.randint(300,480)
 
+with open ("parameters.txt", 'wt') as f:                
+    f.write(
+    "gen.Meal_length="+str(rand_meal_len)+"\n"+
+    #"gen.Meal_period="+str(rand_meal_period)+"\n"+
+    "rag.K.b="+str(rand_b)+"\n"+
+    "rag.K.d="+str(rand_d)+"\n"+
+    "rag.K.kmax="+str(rand_kmax)+"\n"+
+    "rag.K.kmin="+str(rand_kmin)+"\n"+
+    "rag.K.kabs="+str(rand_kabs)+"\n"+
+    "rag.K.BW="+str(rand_BW)+"\n"
+    )
+    f.flush()
+    os.fsync(f)
+    '''
+    omc = OMCSessionZMQ()
+    omc.sendExpression("getVersion()")
+    omc.sendExpression("cd()")
 
-# Starting Multiple Simulations    
+    omc.sendExpression("loadFile(\"connectors.mo\")")
+    omc.sendExpression("getErrorString()")
 
-while (not(fail_pump) and not(exit_ctrl)):  # Inizio Ciclo i1
+    omc.sendExpression("loadFile(\"fake-patient.mo\")")
+    omc.sendExpression("getErrorString()")
+
+    omc.sendExpression("loadFile(\"mealgen.mo\")")
+    omc.sendExpression("getErrorString()")
+
+    omc.sendExpression("loadFile(\"Pump.mo\")")
+    omc.sendExpression("getErrorString()")
+
+    omc.sendExpression("loadFile(\"rag.mo\")")
+    omc.sendExpression("getErrorString()")
+
+    omc.sendExpression("loadFile(\"monitor_pump.mo\")")
+    omc.sendExpression("getErrorString()")
     
+    omc.sendExpression("loadFile(\"monitor_average.mo\")")
+    omc.sendExpression("getErrorString()")
 
-    # Avvio Simulazione Modello 
+    omc.sendExpression("loadFile(\"monitor_hipogli.mo\")")
+    omc.sendExpression("getErrorString()")
+
+    omc.sendExpression("loadFile(\"System.mo\")")
+    omc.sendExpression("getErrorString()")
+
+    omc.sendExpression("buildModel(System, stopTime="+str(float(sim_time))+")")
+    omc.sendExpression("getErrorString()")
+    '''
+
+
+# Starting Multiple Simulations  
+
+exit_ctrl = False
+fail_pump = False  
+
+while (not(fail_pump) and not(exit_ctrl)):  
+    
+    #omc = OMCSessionZMQ()
+    
+    # Building Model 
     
     omc = OMCSessionZMQ()
     omc.sendExpression("getVersion()")
@@ -85,33 +137,33 @@ while (not(fail_pump) and not(exit_ctrl)):  # Inizio Ciclo i1
     omc.sendExpression("buildModel(System, stopTime="+str(float(sim_time))+")")
     omc.sendExpression("getErrorString()")
     
-
-    print "\nReal Simulation:\n"
             
-    # Assegnamento Valori di a e b 
+    # Incrementing a and Decrementing b
     a += 20
     b -= 0.05
-        
-    print "Simulation Number ", i, "\n"
-    print "a: ", a
-    print "b: ", b, "\n"
     
     if (a<=0 or b<=0):
-        print "Invalid Value Simulation Endend"
+        prettyln("Invalid Value Simulation Ended \n", 'r') 
         exit_ctrl = True
         break 
     
+    print "\nSimulation Number ", i, "\n"
+    print "a: ", a
+    print "b: ", b, "\n"
+
+    # Building Model 
+    #os.system("python2 build.py -s "+str(a)+" "+str(b))
     
     with open ("parameters.txt", 'wt') as f:                
         f.write(
         #"gen.Meal_length="+str(rand_meal_len)+"\n"+
         #"gen.Meal_period="+str(rand_meal_period)+"\n"+
-        "rag.K.b="+str(rand_b)+"\n"+
-        "rag.K.d="+str(rand_d)+"\n"+
-        "rag.K.kmax="+str(rand_kmax)+"\n"+
-        "rag.K.kmin="+str(rand_kmin)+"\n"+
-        "rag.K.kabs="+str(rand_kabs)+"\n"+
-        "rag.K.BW="+str(rand_BW)+"\n"+
+        #"rag.K.b="+str(rand_b)+"\n"+
+        #"rag.K.d="+str(rand_d)+"\n"+
+        #"rag.K.kmax="+str(rand_kmax)+"\n"+
+        #"rag.K.kmin="+str(rand_kmin)+"\n"+
+        #"rag.K.kabs="+str(rand_kabs)+"\n"+
+        #"rag.K.BW="+str(rand_BW)+"\n"+
         "pu.a="+str(a)+"\n"+
         "pu.b="+str(b)+"\n")
         f.flush()
@@ -119,10 +171,12 @@ while (not(fail_pump) and not(exit_ctrl)):  # Inizio Ciclo i1
         
     os.system("./System -s=rungekutta -overrideFile=parameters.txt > log")
 
+    #time.sleep(1.0)
+
     fail_pump = omc.sendExpression("val(mo_pu.controller,"+str(float(sim_time))+", \"System_res.mat\")")     
     
-    if (fail_pump) :                   
-        print("Pump Fail Simulation End:")
+    if (fail_pump) : 
+        println("Pump Fail Simulation Ended \n", 'r')              
         print fail_pump
         break
         
@@ -136,7 +190,7 @@ while (not(fail_pump) and not(exit_ctrl)):  # Inizio Ciclo i1
         total_insulin_out = omc.sendExpression("val(mo_av.total_insulin, "+str(float(sim_time))+", \"System_res.mat\")")
 
         if ((average > max_g or average < min_g) and a > 0 and b > 0): 
-            print "Invalid Average Simulation Endend"
+            prettyln("Invalid Average Simulation Endend \n", 'r') 
             exit_ctrl = True
             break
 
@@ -161,23 +215,26 @@ while (not(fail_pump) and not(exit_ctrl)):  # Inizio Ciclo i1
             glucose_lev = average
             sim_numb = i
     
+        prettyln('pass', 'g')
+        prettyln("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n", 'g')
 
-        print("pass")
-
-        print "------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
     
-    # Fine Simulazione
+    # End of Simulation
     
     i += 1
 
-# Fine Ciclo i1
+# End of While Loop
     
-print "\nBest value of insuline out: ", insulin_out_min, "at simulation: ", sim_numb, "with values: "
+print "\nBest value of insuline out: ", 
+pretty(str(insulin_out_min), "g") 
+print "at simulation: ", 
+pretty(str(sim_numb), "g")
+print "with values: "
 print "a = ", best_a
 print "b = ", best_b
 print "glucose = ", glucose_lev, "\n"
 
 print "--- %s seconds ---" % (time.time() - start_time), "\n"
  
-#os.system("libreoffice --calc System_res.csv ./System")
-os.system("./clean.sh ./System") 
+os.system("./clean.sh ") 
+

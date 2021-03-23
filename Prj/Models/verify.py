@@ -6,8 +6,11 @@ import time
 import os.path
 import random
 
+from color import pretty, prettyln
 
 from OMPython import OMCSessionZMQ
+
+omc = OMCSessionZMQ()
 
 print '\nremoving old System (if any) ...'
 os.system("rm -f ./System")    # remove uprevios executable, if any.
@@ -23,7 +26,7 @@ counter_tot = 0
 
 a =  280.0 #1040.0        # original value 1.0
 b =  1.0 #1.95          # original value 0.001
-i = 0
+
 
 start_time = time.time()
 '''
@@ -84,6 +87,7 @@ for i in range(0, num_of_patient):   # Inizio Ciclo
 
     get_sim_time = time.time()
 
+    
     # Building Model  
     
     omc = OMCSessionZMQ()
@@ -120,9 +124,8 @@ for i in range(0, num_of_patient):   # Inizio Ciclo
     omc.sendExpression("buildModel(System, stopTime="+str(float(sim_time))+")")
     omc.sendExpression("getErrorString()")
     
-    print "\nSimulation:\n"
 
-    time.sleep(0.1)    
+    #time.sleep(0.1)    
     
     with open ("parameters.txt", 'wt') as f:                
         f.write(
@@ -143,12 +146,12 @@ for i in range(0, num_of_patient):   # Inizio Ciclo
         
     os.system("./System -s=rungekutta -overrideFile=parameters.txt > log")
 
-    time.sleep(0.1)  
+    #time.sleep(0.1)  
 
     os.system("rm -f parametres.txt")
     
-
-    print "--- %s single simulation seconds ---" % (time.time() - get_sim_time), "\n"
+    print "\nSimulation Time:\n"
+    print "--- %s seconds ---" % (time.time() - get_sim_time), "\n"
     
     # End of Simulation
     
@@ -160,7 +163,8 @@ for i in range(0, num_of_patient):   # Inizio Ciclo
     average = omc.sendExpression("val(mo_av.average,"+str(float(sim_time))+", \"System_res.mat\")")
     low_average = omc.sendExpression("val(mo_av.low_average,"+str(float(sim_time))+", \"System_res.mat\")")
     high_average = omc.sendExpression("val(mo_av.high_average,"+str(float(sim_time))+", \"System_res.mat\")")
-    # da mealgen temporanei
+
+    # from mealgen tmp
     test = omc.sendExpression("val(gen.test,"+str(float(sim_time))+", \"System_res.mat\")")
     delta = omc.sendExpression("val(gen.tmp,"+str(float(sim_time))+", \"System_res.mat\")")
     
@@ -184,20 +188,16 @@ for i in range(0, num_of_patient):   # Inizio Ciclo
 
     if (fail_pump or fail_test) :  
         counter_fail = counter_fail + 1
-        print '\033[31m'
-        print 'fail'
-        print "---------------------------------------------------------------------------------------------------------------------------------"                        
-        print '\033[0m'            
+        prettyln('fail', 'r')
+        prettyln("---------------------------------------------------------------------------------------------------------------------------------\n", 'r')         
     else : 
         counter_ok = counter_ok + 1
-        print '\033[32m'
-        print 'pass'
-        print "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-        print '\033[0m'   
+        prettyln('pass', 'g')
+        prettyln("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n", 'g')
 
-    i += 1         
+            
 
-# Fine Ciclo 
+# End Loop
     
 counter_tot = counter_ok + counter_fail
 print "\nGlobal Average of glucose: ", Global_Average/counter_tot
