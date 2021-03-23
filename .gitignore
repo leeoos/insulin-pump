@@ -1,8 +1,8 @@
 token
 Prj/MLibrary
-Prj/Models/tmp.txt
-Prj/Models/TODO.txt
-Prj/Models/build.py
-Prj/Models/parameters.txt
+./Prj/Models/tmp.txt
+./Prj/Models/TODO.txt
+./Prj/Models/build.py
+./Prj/Models/parameters.txt
 
 
