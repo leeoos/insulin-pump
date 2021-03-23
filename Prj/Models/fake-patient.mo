@@ -10,15 +10,15 @@ Real Ip;
 Real I;
 
 parameter Real Gb = 127;
-parameter Real Ib = -111111; //54;
-parameter Real Vg = 1;
-parameter Real Vi = 0.041;
+parameter Real Ib = 54; //-111111; //54;
+parameter Real Vg = 1.0;
+parameter Real Vi = 0.062; //0.041
 
 initial equation
 G = Gb;
 I = Ib;        
 Gp = Gb/Vg;
-Ip   = Ib * Vi;
+Ip = Ib * Vi;
 
 
 equation
@@ -31,7 +31,7 @@ equation
 
 // FAKE PATIENT EQUATIONS!!! Just TO SHOW INTERFACING patient-pump  !!
 
-  der(Ip) = -0.1*Ip + insulin_from_pump + 0.3*Gp;	
+  der(Ip) = -(0.1)*Ip + insulin_from_pump + 0.3*Gp;	//0.3Gp
   der(Gp) = 20*Rameal - 0.1*Gp - 0.00001*I*Gp;      //insuline from pump 
 
 

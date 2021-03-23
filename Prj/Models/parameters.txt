@@ -1,9 +1,0 @@
-mo_av.stop_simulation=2000
-rag.K.b=0.8041
-rag.K.d=0.0694
-rag.K.kmax=0.0495
-rag.K.kmin=0.0066
-rag.K.kabs=0.0928
-rag.K.BW=103.56
-pu.a=280.0
-pu.b=1.0

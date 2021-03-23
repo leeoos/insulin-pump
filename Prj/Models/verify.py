@@ -1,7 +1,7 @@
 import os
 import sys
-#import math
-#import numpy as np
+import math
+import numpy as np
 import time
 import os.path
 import random
@@ -10,7 +10,7 @@ import random
 from OMPython import OMCSessionZMQ
 
 print '\nremoving old System (if any) ...'
-os.system("rm -f ./System")    # remove previous executable, if any.
+os.system("rm -f ./System")    # remove uprevios executable, if any.
 print "done!\n"
 
 sim_time = 2000
@@ -26,11 +26,51 @@ b =  1.0 #1.95          # original value 0.001
 i = 0
 
 start_time = time.time()
+'''
+omc = OMCSessionZMQ()
+omc.sendExpression("getVersion()")
+omc.sendExpression("cd()")
 
-while (i < num_of_patient):    # Inizio Ciclo
+omc.sendExpression("loadFile(\"connectors.mo\")")
+omc.sendExpression("getErrorString()")
+
+omc.sendExpression("loadFile(\"fake-patient.mo\")")
+omc.sendExpression("getErrorString()")
+
+omc.sendExpression("loadFile(\"mealgen.mo\")")
+omc.sendExpression("getErrorString()")
+
+omc.sendExpression("loadFile(\"Pump.mo\")")
+omc.sendExpression("getErrorString()")
+
+omc.sendExpression("loadFile(\"rag.mo\")")
+omc.sendExpression("getErrorString()")
+
+omc.sendExpression("loadFile(\"monitor_pump.mo\")")
+omc.sendExpression("getErrorString()")
+
+omc.sendExpression("loadFile(\"monitor_average.mo\")")
+omc.sendExpression("getErrorString()")
+
+omc.sendExpression("loadFile(\"monitor_hipogli.mo\")")
+omc.sendExpression("getErrorString()")
+
+omc.sendExpression("loadFile(\"System.mo\")")
+omc.sendExpression("getErrorString()")
+
+
+omc.sendExpression("buildModel(System, stopTime="+str(float(sim_time))+")")
+omc.sendExpression("getErrorString()")
+'''
+
+for i in range(0, num_of_patient):   # Inizio Ciclo
 
     # Generating a randomn patient
     print "\nPatient ", i, "\n"
+
+    fail_test = False
+
+    #os.system("python2 build.py")
 
     rand_b= round(random.uniform(0.5841, 0.8282),4)         # original value 0.7328
     rand_d= round(random.uniform(0.061, 0.1436),4)          # original value 0.1014
@@ -39,15 +79,8 @@ while (i < num_of_patient):    # Inizio Ciclo
     rand_kabs= round(random.uniform(0.0293, 0.1),4)         # original value 0.0542 
     rand_BW= round(random.uniform(83.0, 104.0),2)           # original value 96
 
-    #rand_Vg = round(random.uniform(0.73,1.33),2)           # original value 1
-    #rand_Vi = round(random.uniform(0.039,0.062),3)         #original value 0.041
-
-    #rand_meal_len = random.randint(60,120)
-    #rand_meal_period = random.randint(300,480)
-    #rand_delta = random.randint(10,30)
-
-    fail_test = False
-
+    rand_meal_len = random.randint(600,700)
+    #rand_meal_period = random.randint(3000,4800)
 
     get_sim_time = time.time()
 
@@ -78,21 +111,23 @@ while (i < num_of_patient):    # Inizio Ciclo
     omc.sendExpression("loadFile(\"monitor_average.mo\")")
     omc.sendExpression("getErrorString()")
 
-    omc.sendExpression("loadFile(\"System.mo\")")
+    omc.sendExpression("loadFile(\"monitor_hipogli.mo\")")
     omc.sendExpression("getErrorString()")
 
+    omc.sendExpression("loadFile(\"System.mo\")")
+    omc.sendExpression("getErrorString()")
+    
     omc.sendExpression("buildModel(System, stopTime="+str(float(sim_time))+")")
     omc.sendExpression("getErrorString()")
     
-
     print "\nSimulation:\n"
-            
+
+    time.sleep(0.1)    
     
     with open ("parameters.txt", 'wt') as f:                
         f.write(
-        #"gen.Meal_length="+str(rand_meal_len)+"\n"+
+        "gen.Meal_length="+str(rand_meal_len)+"\n"+
         #"gen.Meal_period="+str(rand_meal_period)+"\n"+
-        #"gen.par_delta="+str(rand_delta)+"\n"+
         "mo_av.stop_simulation="+str(sim_time)+"\n"+
         "rag.K.b="+str(rand_b)+"\n"+
         "rag.K.d="+str(rand_d)+"\n"+
@@ -108,6 +143,11 @@ while (i < num_of_patient):    # Inizio Ciclo
         
     os.system("./System -s=rungekutta -overrideFile=parameters.txt > log")
 
+    time.sleep(0.1)  
+
+    os.system("rm -f parametres.txt")
+    
+
     print "--- %s single simulation seconds ---" % (time.time() - get_sim_time), "\n"
     
     # End of Simulation
@@ -120,6 +160,7 @@ while (i < num_of_patient):    # Inizio Ciclo
     average = omc.sendExpression("val(mo_av.average,"+str(float(sim_time))+", \"System_res.mat\")")
     low_average = omc.sendExpression("val(mo_av.low_average,"+str(float(sim_time))+", \"System_res.mat\")")
     high_average = omc.sendExpression("val(mo_av.high_average,"+str(float(sim_time))+", \"System_res.mat\")")
+    # da mealgen temporanei
     test = omc.sendExpression("val(gen.test,"+str(float(sim_time))+", \"System_res.mat\")")
     delta = omc.sendExpression("val(gen.tmp,"+str(float(sim_time))+", \"System_res.mat\")")
     
@@ -166,5 +207,4 @@ print "Number of tests failed: ", counter_fail,"\n"
 
 print "--- %s seconds ---" % (time.time() - start_time), "\n"
  
-os.system("./clean.sh ./System") 
-
+os.system("./clean.sh") 

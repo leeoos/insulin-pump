@@ -22,6 +22,9 @@ getErrorString();
 loadFile("monitor_average.mo");
 getErrorString();
 
+loadFile("monitor_hipogli.mo");
+getErrorString();
+
 loadFile("System.mo");
 getErrorString();
 
@@ -30,8 +33,8 @@ getErrorString();
 
 
 //plot({pa.G, gen.meal_off, gen.meal_on, gen.delta, gen.i, gen.j}, externalWindow=true);
-plot({pa.G, pu.insulin_out, gen.delta}, externalWindow=true);
-//plot({pa.G}, externalWindow=true);
+//plot({pa.G, pu.insulin_out, gen.delta}, externalWindow=true);
+plot({pa.G, mo_av.total_insulin, pu.insulin_out}, externalWindow=true);
 
 
 

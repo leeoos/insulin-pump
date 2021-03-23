@@ -17,3 +17,4 @@ rm *.json
 
 rm *.xml
 
+rm parameters.txt
