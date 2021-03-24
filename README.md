@@ -19,7 +19,7 @@ To simulate
   <li> <i> run.mos:</i> </li>
   <li> <i> verify.py:</i> </li>
   <li> <i> synth.py:</i> </li> 
-<ul>
+</ul>
 <ul>
   <li> <i> run.sh:</i> </li>
   <li> <i> clean.sh:</i> </li>
