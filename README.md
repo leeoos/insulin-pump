@@ -1,11 +1,12 @@
 # Insulin Pump Simulator
-An insulin pump is a medical system that simulates the operation of the pancreas. The software controlling this system is an embedded system, which
-collects information from a sensor and controls a pump that delivers a controlled dose of insulin to a user. People who suffer from diabetes use the system.
+<p>An insulin pump is a medical system that simulates the operation of the pancreas. The software controlling this system is an embedded system, which
+collects information from a sensor and controls a pump that delivers a controlled dose of insulin to a user. People who suffer from diabetes use the system.</p>
 
 <h2>Goals of the project</h2>
-The problem with this treatment is that the level of insulin required does not just depend on the blood glucose level but also on the time of the last insulin injection.
+<p>The problem with this treatment is that the level of insulin required does not just depend on the blood glucose level but also on the time of the last insulin injection. The goal of the project was to buid a system able to simulate the job of a real insulin pump on an arbitrary numbers of <i>in-silico<i> patients.</p>
+
 <h2>What is inside Prj/Models</h2>
-The main files inside Models are Modelica files and tow python scripts: 
+<h3>The main files inside Models are Modelica files and tow python scripts:</h3> 
 <ul>
   <li> <i> fake_patient.mo:</i> </li>
   <li> <i> pump.mo:</i> </li>
@@ -20,7 +21,7 @@ The main files inside Models are Modelica files and tow python scripts:
   <li> <i> verify.py:</i> </li>
   <li> <i> synth.py:</i> </li> 
 </ul>
-The other files are ...
+<h3>The other files are ...</h3>
 <ul>
   <li> <i> run.sh:</i> </li>
   <li> <i> clean.sh:</i> </li>
