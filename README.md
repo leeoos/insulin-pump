@@ -4,7 +4,7 @@ collects information from a sensor and controls a pump that delivers a controlle
 
 <h2>Goals of the project</h2>
 The problem with this treatment is that the level of insulin required does not just depend on the blood glucose level but also on the time of the last insulin injection.
-<h2>What is inside Prj/Models<h2>
+<h2>What is inside Prj/Models</h2>
 The main files inside Models are Modelica files and tow python scripts: 
 <ul>
   <li> <i> fake_patient.mo:</i> </li>
