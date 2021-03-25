@@ -32,9 +32,9 @@ simulate(System, stopTime=2000, method="rungekutta");
 getErrorString();
 
 
-//plot({pa.G, gen.meal_off, gen.meal_on, gen.delta, gen.i, gen.j}, externalWindow=true);
+plot({gen.meal_off, gen.meal_on, gen.delta}, externalWindow=true);
 //plot({pa.G, pu.insulin_out, gen.delta}, externalWindow=true);
-plot({pa.G, mo_av.total_insulin, pu.insulin_out}, externalWindow=true);
+//plot({pa.G, mo_av.total_insulin, pu.insulin_out}, externalWindow=true);
 
 
 

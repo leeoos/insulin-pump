@@ -7,8 +7,8 @@ OutputReal insulin_out;   //amount of insulin to give the patient
 Real z, err;
 
 parameter Real T = 0.1;   
-parameter Real a = 280; //1040.0;           //valore standard: 1.0; 		
-parameter Real b = 1.0; //1.95;            //valore standard: 0.001; 
+parameter Real a = 1040.0;//280; //1040.0;           //valore standard: 1.0; 		
+parameter Real b = 1.95; //1.0; //1.95;            //valore standard: 0.001; 
 parameter Real ref = 100;            //glucosio desiderato; 
 
 initial equation

@@ -20,7 +20,7 @@ when sample(100, T) then
 
 if(sim_step == 4000) then
 
-if(tmp_min < 40 ) then
+if(tmp_min < 70 ) then
 min_g_control := true;
 end if;
 

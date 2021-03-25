@@ -12,8 +12,9 @@ from OMPython import OMCSessionZMQ
 
 omc = OMCSessionZMQ()
 
+# remove uprevios executable, if any.
 print '\nremoving old System (if any) ...'
-os.system("rm -f ./System")    # remove uprevios executable, if any.
+os.system("rm -f ./System")    
 print "done!\n"
 
 sim_time = 2000
@@ -24,47 +25,13 @@ counter_ok = 0
 counter_fail = 0
 counter_tot = 0
 
-a =  280.0 #1040.0        # original value 1.0
-b =  1.0 #1.95          # original value 0.001
+a =  1040 #280.0        # original value 1.0
+b =  1.95 #1.0          # original value 0.001
 
+pre_average = 0
+enable_sleep = False
 
 start_time = time.time()
-'''
-omc = OMCSessionZMQ()
-omc.sendExpression("getVersion()")
-omc.sendExpression("cd()")
-
-omc.sendExpression("loadFile(\"connectors.mo\")")
-omc.sendExpression("getErrorString()")
-
-omc.sendExpression("loadFile(\"fake-patient.mo\")")
-omc.sendExpression("getErrorString()")
-
-omc.sendExpression("loadFile(\"mealgen.mo\")")
-omc.sendExpression("getErrorString()")
-
-omc.sendExpression("loadFile(\"Pump.mo\")")
-omc.sendExpression("getErrorString()")
-
-omc.sendExpression("loadFile(\"rag.mo\")")
-omc.sendExpression("getErrorString()")
-
-omc.sendExpression("loadFile(\"monitor_pump.mo\")")
-omc.sendExpression("getErrorString()")
-
-omc.sendExpression("loadFile(\"monitor_average.mo\")")
-omc.sendExpression("getErrorString()")
-
-omc.sendExpression("loadFile(\"monitor_hipogli.mo\")")
-omc.sendExpression("getErrorString()")
-
-omc.sendExpression("loadFile(\"System.mo\")")
-omc.sendExpression("getErrorString()")
-
-
-omc.sendExpression("buildModel(System, stopTime="+str(float(sim_time))+")")
-omc.sendExpression("getErrorString()")
-'''
 
 for i in range(0, num_of_patient):   # Inizio Ciclo
 
@@ -73,8 +40,6 @@ for i in range(0, num_of_patient):   # Inizio Ciclo
 
     fail_test = False
 
-    #os.system("python2 build.py")
-
     rand_b= round(random.uniform(0.5841, 0.8282),4)         # original value 0.7328
     rand_d= round(random.uniform(0.061, 0.1436),4)          # original value 0.1014
     rand_kmax= round(random.uniform(0.0318,0.0869),4)       # original value 0.0426 
@@ -82,15 +47,14 @@ for i in range(0, num_of_patient):   # Inizio Ciclo
     rand_kabs= round(random.uniform(0.0293, 0.1),4)         # original value 0.0542 
     rand_BW= round(random.uniform(83.0, 104.0),2)           # original value 96
 
-    rand_meal_len = random.randint(600,700)
-    #rand_meal_period = random.randint(3000,4800)
+    #rand_meal_len = random.randint(590,650)
+    #rand_meal_period = random.randint(2300,2450)
 
     get_sim_time = time.time()
-
     
     # Building Model  
     
-    omc = OMCSessionZMQ()
+    #omc = OMCSessionZMQ()
     omc.sendExpression("getVersion()")
     omc.sendExpression("cd()")
 
@@ -129,7 +93,7 @@ for i in range(0, num_of_patient):   # Inizio Ciclo
     
     with open ("parameters.txt", 'wt') as f:                
         f.write(
-        "gen.Meal_length="+str(rand_meal_len)+"\n"+
+        #"gen.Meal_length="+str(rand_meal_len)+"\n"+
         #"gen.Meal_period="+str(rand_meal_period)+"\n"+
         "mo_av.stop_simulation="+str(sim_time)+"\n"+
         "rag.K.b="+str(rand_b)+"\n"+
@@ -146,7 +110,9 @@ for i in range(0, num_of_patient):   # Inizio Ciclo
         
     os.system("./System -s=rungekutta -overrideFile=parameters.txt > log")
 
-    #time.sleep(0.1)  
+    if (enable_sleep):
+        prettyln("Time delay has been activated because simulation time overcome parameter writing time in file parameters.txt\n", "r") 
+        time.sleep(1)  
 
     os.system("rm -f parametres.txt")
     
@@ -164,17 +130,13 @@ for i in range(0, num_of_patient):   # Inizio Ciclo
     low_average = omc.sendExpression("val(mo_av.low_average,"+str(float(sim_time))+", \"System_res.mat\")")
     high_average = omc.sendExpression("val(mo_av.high_average,"+str(float(sim_time))+", \"System_res.mat\")")
 
-    # from mealgen tmp
-    test = omc.sendExpression("val(gen.test,"+str(float(sim_time))+", \"System_res.mat\")")
-    delta = omc.sendExpression("val(gen.tmp,"+str(float(sim_time))+", \"System_res.mat\")")
-    
+    if (average == pre_average): 
+        enable_sleep = True
+    else: pre_average = average
     
     print "\nAverage values: "
     print "min glucose: ", min_g
     print "max glucose: ", max_g
-    print "test: ", test
-    print "delta:", delta
-
     if (low_average):
         print "The average glucose value is too low: ", average
         fail_test = True
@@ -185,7 +147,7 @@ for i in range(0, num_of_patient):   # Inizio Ciclo
     else: print "average glucose: ", average
             
     Global_Average = Global_Average + average
-
+    
     if (fail_pump or fail_test) :  
         counter_fail = counter_fail + 1
         prettyln('fail', 'r')
@@ -194,9 +156,7 @@ for i in range(0, num_of_patient):   # Inizio Ciclo
         counter_ok = counter_ok + 1
         prettyln('pass', 'g')
         prettyln("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n", 'g')
-
-            
-
+     
 # End Loop
     
 counter_tot = counter_ok + counter_fail
@@ -208,3 +168,4 @@ print "Number of tests failed: ", counter_fail,"\n"
 print "--- %s seconds ---" % (time.time() - start_time), "\n"
  
 os.system("./clean.sh") 
+
