@@ -8,10 +8,10 @@ collects information from a sensor and controls a pump that delivers a controlle
 <h2>What is inside Prj/Models</h2>
 <h3>The main files inside Models are Modelica files and two python scripts:</h3> 
 <ul>
+  <li> <i> mealgen.mo:</i> </li>
   <li> <i> fake_patient.mo:</i> </li>
   <li> <i> pump.mo:</i> </li>
-  <li> <i> mealgen.mo:</i> </li>
-  <li> <i> rameal.mo:</i> </li>
+  <li> <i> rag_meal.mo:</i> </li>
   <li> <i> monitor_pump.mo:</i> </li>
   <li> <i> monitor_hipogli.mo:</i> </li>
   <li> <i> monitor_average.mo:</i> </li>

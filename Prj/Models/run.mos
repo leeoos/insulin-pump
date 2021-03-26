@@ -4,13 +4,13 @@ getErrorString();
 loadFile("connectors.mo");
 getErrorString();
 
-loadFile("fake-patient.mo");
+loadFile("fake_patient.mo");
 getErrorString();
 
-loadFile("rag.mo");
+loadFile("rag_meal.mo");
 getErrorString();
 
-loadFile("Pump.mo");
+loadFile("pump.mo");
 getErrorString();
 
 loadFile("mealgen.mo");
@@ -31,11 +31,7 @@ getErrorString();
 simulate(System, stopTime=2000, method="rungekutta");
 getErrorString();
 
-
-plot({gen.meal_off, gen.meal_on, gen.delta}, externalWindow=true);
-//plot({pa.G, pu.insulin_out, gen.delta}, externalWindow=true);
-//plot({pa.G, mo_av.total_insulin, pu.insulin_out}, externalWindow=true);
-
-
+//plot({gen.meal_off, gen.meal_on, gen.delta}, externalWindow=true);
+plot({pa.G, pu.insulin_out}, externalWindow=true);
 
 getErrorString();

@@ -10,32 +10,34 @@ from color import pretty, prettyln
 
 from OMPython import OMCSessionZMQ
 
-omc = OMCSessionZMQ()
+#omc = OMCSessionZMQ()
 
-# remove uprevios executable, if any.
+# remove previos executable, if any ...
 print '\nremoving old System (if any) ...'
 os.system("rm -f ./System")    
 print "done!\n"
 
+# setting simulation time an number of patient to test ...
 sim_time = 2000
 num_of_patient = 100
 
+# setting global variables to count the number of passed test and the average of glucose level between diffrent patients
 Global_Average = 0
 counter_ok = 0
 counter_fail = 0
 counter_tot = 0
 
-a =  1040 #280.0        # original value 1.0
-b =  1.95 #1.0          # original value 0.001
+a =  1040       # original value 1.0
+b =  1.95       # original value 0.001
 
 pre_average = 0
 enable_sleep = False
 
 start_time = time.time()
 
-for i in range(0, num_of_patient):   # Inizio Ciclo
+for i in range(0, num_of_patient):   # Start simulation for n patients
 
-    # Generating a randomn patient
+    # Generating a random patient
     print "\nPatient ", i, "\n"
 
     fail_test = False
@@ -52,25 +54,25 @@ for i in range(0, num_of_patient):   # Inizio Ciclo
 
     get_sim_time = time.time()
     
-    # Building Model  
+    # Building Model for specific patient 
     
-    #omc = OMCSessionZMQ()
+    omc = OMCSessionZMQ()
     omc.sendExpression("getVersion()")
     omc.sendExpression("cd()")
 
     omc.sendExpression("loadFile(\"connectors.mo\")")
     omc.sendExpression("getErrorString()")
 
-    omc.sendExpression("loadFile(\"fake-patient.mo\")")
+    omc.sendExpression("loadFile(\"fake_patient.mo\")")
     omc.sendExpression("getErrorString()")
 
     omc.sendExpression("loadFile(\"mealgen.mo\")")
     omc.sendExpression("getErrorString()")
 
-    omc.sendExpression("loadFile(\"Pump.mo\")")
+    omc.sendExpression("loadFile(\"pump.mo\")")
     omc.sendExpression("getErrorString()")
 
-    omc.sendExpression("loadFile(\"rag.mo\")")
+    omc.sendExpression("loadFile(\"rag_meal.mo\")")
     omc.sendExpression("getErrorString()")
 
     omc.sendExpression("loadFile(\"monitor_pump.mo\")")
@@ -87,10 +89,8 @@ for i in range(0, num_of_patient):   # Inizio Ciclo
     
     omc.sendExpression("buildModel(System, stopTime="+str(float(sim_time))+")")
     omc.sendExpression("getErrorString()")
-    
 
-    #time.sleep(0.1)    
-    
+    # write patient parameter in parameter.txt
     with open ("parameters.txt", 'wt') as f:                
         f.write(
         #"gen.Meal_length="+str(rand_meal_len)+"\n"+
@@ -111,10 +111,10 @@ for i in range(0, num_of_patient):   # Inizio Ciclo
     os.system("./System -s=rungekutta -overrideFile=parameters.txt > log")
 
     if (enable_sleep):
-        prettyln("Time delay has been activated because simulation time overcome parameter writing time in file parameters.txt\n", "r") 
+        prettyln("Time delay has been activated because simulation time overcome parameter writing time on file parameters.txt\n", "r") 
         time.sleep(1)  
 
-    os.system("rm -f parametres.txt")
+    os.system("rm -f parametres.txt")       # to be on the safe Side
     
     print "\nSimulation Time:\n"
     print "--- %s seconds ---" % (time.time() - get_sim_time), "\n"
@@ -122,8 +122,6 @@ for i in range(0, num_of_patient):   # Inizio Ciclo
     # End of Simulation
     
     fail_pump = omc.sendExpression("val(mo_pu.controller,"+str(float(sim_time))+", \"System_res.mat\")")
-
-        
     min_g = omc.sendExpression("val(mo_av.min_g,"+str(float(sim_time))+", \"System_res.mat\")")
     max_g = omc.sendExpression("val(mo_av.max_g,"+str(float(sim_time))+", \"System_res.mat\")")
     average = omc.sendExpression("val(mo_av.average,"+str(float(sim_time))+", \"System_res.mat\")")

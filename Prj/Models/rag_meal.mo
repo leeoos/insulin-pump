@@ -11,7 +11,6 @@ parameter Real f=0.9;       //fixed at 0.9
 end KPar;
 
 
-
 function k_empt
 input KPar K;
 input Real Q;

@@ -60,16 +60,16 @@ while (not(fail_pump) and not(exit_ctrl)):
     omc.sendExpression("loadFile(\"connectors.mo\")")
     omc.sendExpression("getErrorString()")
 
-    omc.sendExpression("loadFile(\"fake-patient.mo\")")
+    omc.sendExpression("loadFile(\"fake_patient.mo\")")
     omc.sendExpression("getErrorString()")
 
     omc.sendExpression("loadFile(\"mealgen.mo\")")
     omc.sendExpression("getErrorString()")
 
-    omc.sendExpression("loadFile(\"Pump.mo\")")
+    omc.sendExpression("loadFile(\"pump.mo\")")
     omc.sendExpression("getErrorString()")
 
-    omc.sendExpression("loadFile(\"rag.mo\")")
+    omc.sendExpression("loadFile(\"rag_meal.mo\")")
     omc.sendExpression("getErrorString()")
 
     omc.sendExpression("loadFile(\"monitor_pump.mo\")")
