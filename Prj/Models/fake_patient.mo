@@ -1,9 +1,9 @@
 block Patient
 
 InputReal Rameal;                 // food intake
-InputReal insulin_from_pump;      //insulin from the pump
+InputReal insulin_from_pump;      // insulin from the pump
 
-OutputReal G;                    // blood glucose measured by the pump
+OutputReal G;                     // blood glucose measured by the pump
 
 Real Gp;
 Real Ip;
@@ -23,13 +23,14 @@ Ip = Ib * Vi;
 
 equation
 
-// Revision of equation A2 to interface with insulin pump
+/* Revision of equation A2 in ../../Requirement/ 
+to interface with insulin pump */
+
   I  = (Ip + insulin_from_pump)/Vi;
    
   G  = Gp/Vg;
 
-
-// FAKE PATIENT EQUATIONS!!! Just TO SHOW INTERFACING patient-pump  !!
+// FAKE PATIENT EQUATIONS!!! Just TO SHOW INTERFACING patient-pump  !! 
 
   der(Ip) = -(0.1)*Ip + insulin_from_pump + 0.3*Gp;	
   der(Gp) = 20*Rameal - 0.1*Gp - 0.00001*I*Gp;      

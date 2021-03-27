@@ -1,6 +1,8 @@
+// loading model
 loadModel(Modelica);
 getErrorString();
 
+// loading files
 loadFile("connectors.mo");
 getErrorString();
 
@@ -28,10 +30,24 @@ getErrorString();
 loadFile("System.mo");
 getErrorString();
 
+// start simulation
 simulate(System, stopTime=2000, method="rungekutta");
 getErrorString();
 
-//plot({gen.meal_off, gen.meal_on, gen.delta}, externalWindow=true);
-plot({pa.G, pu.insulin_out}, externalWindow=true);
+// plotting...
+/* Note: uncomment one of the following plot instruction 
+and comment the others to get the graph you want */
+
+// patient's glucose only:
+//plot({pa.G}, externalWindow=true);
+
+// patient's glucose and internal insuline: 
+//plot({pa.G, pa.I}, externalWindow=true);
+
+// patient's glucose and internal insuline and insulin from pump
+plot({pa.G, pa.I, pa.insulin_from_pump}, externalWindow=true);
+
+// meal generation process
+//plot({gen.delta, gen.meal_on, gen.meal_off}, externalWindow=true);
 
 getErrorString();

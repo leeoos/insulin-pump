@@ -4,7 +4,7 @@ InputBool meal_control;
 OutputReal delta;
 
 
-parameter Integer Meal_length = 600;  // lenght of meal (minutes) 
+parameter Integer Meal_length = 600;    // lenght of meal (minutes) 
 parameter Integer Meal_period = 2400;  // periodic meals: every 4 hours.
 parameter Real T = 0.1;
 
@@ -18,13 +18,12 @@ j = Meal_length;
 meal_on = false;
 meal_off = false;
 
-//equation
-
 algorithm
 
 // periodic meal of duration Meal_length every Meal_period minutes
 
 when sample(0, T) then
+
 
 if (meal_control) then // Mangia Molto di piu
 
@@ -62,6 +61,7 @@ delta := 0;
 end if;
 
 end if;
+
 
 i := i + 1;
 j := j + 1;

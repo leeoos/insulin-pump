@@ -6,22 +6,24 @@ import time
 import os.path
 import random
 
+# Color is a script that implemente a used function to print line in diffrenet colors 
+# Note: if this cause any problem it can be removed 
+# but to do so it's also requred to change all the invokation 
+# to pretty or prettyln to simple print 
 from color import pretty, prettyln
 
 from OMPython import OMCSessionZMQ
 
-#omc = OMCSessionZMQ()
-
-# remove previos executable, if any ...
+# Removing previos executable, if any ...
 print '\nremoving old System (if any) ...'
 os.system("rm -f ./System")    
 print "done!\n"
 
-# setting simulation time an number of patient to test ...
+# Simulation time and number of patient to test ...
 sim_time = 2000
 num_of_patient = 100
 
-# setting global variables to count the number of passed test and the average of glucose level between diffrent patients
+# Initializing total average glucose across all simulations and test counter
 Global_Average = 0
 counter_ok = 0
 counter_fail = 0
@@ -35,12 +37,10 @@ enable_sleep = False
 
 start_time = time.time()
 
-for i in range(0, num_of_patient):   # Start simulation for n patients
+for i in range(0, num_of_patient):   # Start multiple simulation for n patients
 
     # Generating a random patient
     print "\nPatient ", i, "\n"
-
-    fail_test = False
 
     rand_b= round(random.uniform(0.5841, 0.8282),4)         # original value 0.7328
     rand_d= round(random.uniform(0.061, 0.1436),4)          # original value 0.1014
@@ -52,11 +52,12 @@ for i in range(0, num_of_patient):   # Start simulation for n patients
     #rand_meal_len = random.randint(590,650)
     #rand_meal_period = random.randint(2300,2450)
 
+    # start counting the time for a single simulation
     get_sim_time = time.time()
     
     # Building Model for specific patient 
-    
     omc = OMCSessionZMQ()
+
     omc.sendExpression("getVersion()")
     omc.sendExpression("cd()")
 
@@ -119,14 +120,16 @@ for i in range(0, num_of_patient):   # Start simulation for n patients
     print "\nSimulation Time:\n"
     print "--- %s seconds ---" % (time.time() - get_sim_time), "\n"
     
-    # End of Simulation
+    # End of single Simulation
     
+    # Collecting the control variables 
     fail_pump = omc.sendExpression("val(mo_pu.controller,"+str(float(sim_time))+", \"System_res.mat\")")
+    low_average = omc.sendExpression("val(mo_av.low_average,"+str(float(sim_time))+", \"System_res.mat\")")
+    high_average = omc.sendExpression("val(mo_av.high_average,"+str(float(sim_time))+", \"System_res.mat\")")
+
     min_g = omc.sendExpression("val(mo_av.min_g,"+str(float(sim_time))+", \"System_res.mat\")")
     max_g = omc.sendExpression("val(mo_av.max_g,"+str(float(sim_time))+", \"System_res.mat\")")
     average = omc.sendExpression("val(mo_av.average,"+str(float(sim_time))+", \"System_res.mat\")")
-    low_average = omc.sendExpression("val(mo_av.low_average,"+str(float(sim_time))+", \"System_res.mat\")")
-    high_average = omc.sendExpression("val(mo_av.high_average,"+str(float(sim_time))+", \"System_res.mat\")")
 
     if (average == pre_average): 
         enable_sleep = True
@@ -137,16 +140,14 @@ for i in range(0, num_of_patient):   # Start simulation for n patients
     print "max glucose: ", max_g
     if (low_average):
         print "The average glucose value is too low: ", average
-        fail_test = True
     elif (high_average): 
         print "The average glucose value is too high: ", average
-        fail_test = True
 
     else: print "average glucose: ", average
             
     Global_Average = Global_Average + average
     
-    if (fail_pump or fail_test) :  
+    if (fail_pump or low_average or high_average) :  
         counter_fail = counter_fail + 1
         prettyln('fail', 'r')
         prettyln("---------------------------------------------------------------------------------------------------------------------------------\n", 'r')         
@@ -155,7 +156,7 @@ for i in range(0, num_of_patient):   # Start simulation for n patients
         prettyln('pass', 'g')
         prettyln("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n", 'g')
      
-# End Loop
+# End n-th Simulation
     
 counter_tot = counter_ok + counter_fail
 print "\nGlobal Average of glucose: ", Global_Average/counter_tot
