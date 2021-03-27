@@ -4,6 +4,7 @@ InputReal glucose_from_patient;
 
 OutputBool min_g_control;
 
+parameter Real correction = 70;
 
 Real tmp_min;                      
 Integer sim_step;
@@ -20,7 +21,7 @@ when sample(100, T) then
 
 if(sim_step == 4000) then
 
-if(tmp_min < 70 ) then
+if(tmp_min < correction ) then
 min_g_control := true;
 end if;
 

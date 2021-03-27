@@ -14,7 +14,7 @@ from color import pretty, prettyln
 
 from OMPython import OMCSessionZMQ
 
-# Removing previos executable, if any ...
+# Remove previos executable, if any ...
 print '\nremoving old System (if any) ...'
 os.system("rm -f ./System")    
 print "done!\n"
@@ -23,23 +23,30 @@ print "done!\n"
 sim_time = 2000
 num_of_patient = 100
 
-# Initializing total average glucose across all simulations and test counter
+# Initializes total average glucose across all simulations and the test counter
 Global_Average = 0
 counter_ok = 0
 counter_fail = 0
 counter_tot = 0
 
+#
 a =  1040       # original value 1.0
 b =  1.95       # original value 0.001
 
+# Minimum acceptable blood glucose value
+lower_limit = 70
+
+#
 pre_average = 0
+delay = 0
 enable_sleep = False
 
+# Start counting time to run n Simulation
 start_time = time.time()
 
 for i in range(0, num_of_patient):   # Start multiple simulation for n patients
 
-    # Generating a random patient
+    # Generate a random patient
     print "\nPatient ", i, "\n"
 
     rand_b= round(random.uniform(0.5841, 0.8282),4)         # original value 0.7328
@@ -52,10 +59,10 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
     #rand_meal_len = random.randint(590,650)
     #rand_meal_period = random.randint(2300,2450)
 
-    # start counting the time for a single simulation
+    # Start counting time to run a single Simulation
     get_sim_time = time.time()
     
-    # Building Model for specific patient 
+    # Build Model for specific patient 
     omc = OMCSessionZMQ()
 
     omc.sendExpression("getVersion()")
@@ -91,7 +98,7 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
     omc.sendExpression("buildModel(System, stopTime="+str(float(sim_time))+")")
     omc.sendExpression("getErrorString()")
 
-    # write patient parameter in parameter.txt
+    # Write patient parameters in parameters.txt and run simulation with new values
     with open ("parameters.txt", 'wt') as f:                
         f.write(
         #"gen.Meal_length="+str(rand_meal_len)+"\n"+
@@ -104,37 +111,43 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
         "rag.K.kabs="+str(rand_kabs)+"\n"+
         "rag.K.BW="+str(rand_BW)+"\n"+
         "pu.a="+str(a)+"\n"+
-        "pu.b="+str(b)+"\n"
+        "pu.b="+str(b)+"\n"+
+        "mo_hi.correction="+str(lower_limit)+"\n"
         )
         f.flush()
         os.fsync(f)
-        
+  
     os.system("./System -s=rungekutta -overrideFile=parameters.txt > log")
 
-    if (enable_sleep):
-        prettyln("Time delay has been activated because simulation time overcome parameter writing time on file parameters.txt\n", "r") 
-        time.sleep(1)  
+    # Apply the delay only in case there are some duplicate patients
+    if (delay >= 1): 
+        prettyln("Delay: "+str(delay)+"s\n", 'r')
+        time.sleep(delay)  
 
     os.system("rm -f parametres.txt")       # to be on the safe Side
-    
+
+    # End of a single Simulation
     print "\nSimulation Time:\n"
     print "--- %s seconds ---" % (time.time() - get_sim_time), "\n"
     
-    # End of single Simulation
-    
-    # Collecting the control variables 
+
+    # Get control variables from monitors
     fail_pump = omc.sendExpression("val(mo_pu.controller,"+str(float(sim_time))+", \"System_res.mat\")")
     low_average = omc.sendExpression("val(mo_av.low_average,"+str(float(sim_time))+", \"System_res.mat\")")
     high_average = omc.sendExpression("val(mo_av.high_average,"+str(float(sim_time))+", \"System_res.mat\")")
 
+    # Get glucose values from monitors
     min_g = omc.sendExpression("val(mo_av.min_g,"+str(float(sim_time))+", \"System_res.mat\")")
     max_g = omc.sendExpression("val(mo_av.max_g,"+str(float(sim_time))+", \"System_res.mat\")")
     average = omc.sendExpression("val(mo_av.average,"+str(float(sim_time))+", \"System_res.mat\")")
 
-    if (average == pre_average): 
-        enable_sleep = True
+    # Check for duplicate patients
+    if (average == pre_average):
+        prettyln("The delay has been activated because the simulation time exceeds the time for writing parameters to the parameters.txt file \n", 'r')
+        delay += 1
     else: pre_average = average
     
+    # printing patient's values
     print "\nAverage values: "
     print "min glucose: ", min_g
     print "max glucose: ", max_g
@@ -142,11 +155,11 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
         print "The average glucose value is too low: ", average
     elif (high_average): 
         print "The average glucose value is too high: ", average
-
     else: print "average glucose: ", average
             
     Global_Average = Global_Average + average
     
+    #
     if (fail_pump or low_average or high_average) :  
         counter_fail = counter_fail + 1
         prettyln('fail', 'r')
@@ -156,8 +169,11 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
         prettyln('pass', 'g')
         prettyln("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n", 'g')
      
+    #os.system("rm -f System_res.mat")       # to be on the safe side
+
 # End n-th Simulation
-    
+
+#   
 counter_tot = counter_ok + counter_fail
 print "\nGlobal Average of glucose: ", Global_Average/counter_tot
 print "\nTotal number of tests: ", counter_tot

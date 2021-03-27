@@ -21,6 +21,10 @@ sim_time = 2000
 a = 1040.0          # original value 1.0
 b = 1.95            # original value 0.001
 
+# Minimum acceptable blood glucose value
+lower_limit = 70
+
+#
 Global_Average = 0
 insulin_out_min = float("inf")
 best_a = 0
@@ -29,9 +33,10 @@ glucose_lev = 0
 sim_numb = 0
 i = 1
 
+# Start counting time to run n Simulation
 start_time = time.time()
 
-# Generating Fake Patient 
+# Generate a random patient 
 
 rand_b= round(random.uniform(0.5841, 0.8282),4)         # original value 0.7328
 rand_d= round(random.uniform(0.061, 0.1436),4)          # original value 0.1014
@@ -43,14 +48,14 @@ rand_BW= round(random.uniform(83.0, 104.0),2)           # original value 96
 #rand_meal_len = random.randint(600, 700)
 #rand_meal_period = random.randint(300,480)
 
-# Starting Multiple Simulations  
+# Start Multiple Simulations  
 
-exit_ctrl = False
-fail_pump = False  
+exit_ctrl = False       # exit condiction, just in case break does not work
+fail_pump = False       # 
 
 while (not(fail_pump) and not(exit_ctrl)):  
     
-    # Building Model 
+    # Build Model 
     omc = OMCSessionZMQ()
 
     omc.sendExpression("getVersion()")
@@ -87,10 +92,11 @@ while (not(fail_pump) and not(exit_ctrl)):
     omc.sendExpression("getErrorString()")
     
             
-    # Incrementing a and Decrementing b
+    # Adjustment of a and b to find best values
     a += 20
     b -= 0.05
     
+    #
     if (a<=0 or b<=0):
         prettyln("Invalid Value Simulation Ended \n", 'r') 
         exit_ctrl = True
@@ -100,6 +106,7 @@ while (not(fail_pump) and not(exit_ctrl)):
     print "a: ", a
     print "b: ", b, "\n"
     
+    # Write patient parameters in parameters.txt and run simulation with new values
     with open ("parameters.txt", 'wt') as f:                
         f.write(
         #"gen.Meal_length="+str(rand_meal_len)+"\n"+
@@ -111,47 +118,45 @@ while (not(fail_pump) and not(exit_ctrl)):
         "rag.K.kabs="+str(rand_kabs)+"\n"+
         "rag.K.BW="+str(rand_BW)+"\n"+
         "pu.a="+str(a)+"\n"+
-        "pu.b="+str(b)+"\n")
+        "pu.b="+str(b)+"\n"+
+        "mo_hi.correction="+str(lower_limit)+"\n"
+        )
         f.flush()
         os.fsync(f)
         
-    os.system("./System -s=rungekutta -overrideFile=parameters.txt > log")
-
-    if (enable_sleep):
-        prettyln("Time delay has been activated because simulation time overcome parameter writing time on file parameters.txt\n", "r") 
-        time.sleep(1)  
+    os.system("./System -s=rungekutta -overrideFile=parameters.txt > log") 
 
     os.system("rm -f parametres.txt")       # to be on the safe Side
 
-    # checking if the pump has failed or not
+    # check for pump falieur
     fail_pump = omc.sendExpression("val(mo_pu.controller,"+str(float(sim_time))+", \"System_res.mat\")")     
     
+    #
     if (fail_pump) : 
         println("Pump Fail Simulation Ended \n", 'r')              
         print fail_pump
         break
         
     else: 
-    
         min_g = omc.sendExpression("val(mo_av.min_g,"+str(float(sim_time))+", \"System_res.mat\")")
         max_g = omc.sendExpression("val(mo_av.max_g,"+str(float(sim_time))+", \"System_res.mat\")")
         average = omc.sendExpression("val(mo_av.average,"+str(float(sim_time))+", \"System_res.mat\")")
         total_insulin_out = omc.sendExpression("val(mo_av.total_insulin, "+str(float(sim_time))+", \"System_res.mat\")")
-
+        
+        #
         if ((average > max_g or average < min_g) and a > 0 and b > 0): 
             prettyln("Invalid Average Simulation Endend \n", 'r') 
             exit_ctrl = True
             break
 
-        
+        # printing patient's values
         print "\nAverage values: "
         print "min glucose: ", min_g
         print "max glucose: ", max_g
         print "total injected insulin: ", total_insulin_out
         print "average glucose: ", average
         
-        # Saving best values for insulin
-        
+        # Save best values for insulin
         if (total_insulin_out < insulin_out_min): 
             insulin_out_min = total_insulin_out
             best_a = a
@@ -161,9 +166,8 @@ while (not(fail_pump) and not(exit_ctrl)):
         prettyln('pass', 'g')
         prettyln("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n", 'g')
 
-    
-    # End of Simulation
-    
+    #os.system("rm -f System_res.mat")       # to be on the safe side
+
     i += 1
 
 # End of While Loop
@@ -172,7 +176,7 @@ print "\nBest value of insuline out: ",
 pretty(str(insulin_out_min), "g") 
 print "at simulation: ", 
 pretty(str(sim_numb), "g")
-print "with values: "
+print "with: "
 print "a = ", best_a
 print "b = ", best_b, "\n"
 
