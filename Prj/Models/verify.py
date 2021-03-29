@@ -6,10 +6,10 @@ import time
 import os.path
 import random
 
-# Color is a script that implemente a used function to print line in diffrenet colors 
-# Note: if this cause any problem it can be removed 
-# but to do so it's also requred to change all the invokation 
-# to pretty or prettyln to simple print 
+# Color is a script that implements a function used to print colored text
+# Note: If this causes problems, you can remove it
+# but to do this you also need to edit all calls to
+# pretty or prettyln in plain print     
 from color import pretty, prettyln
 
 from OMPython import OMCSessionZMQ
@@ -29,7 +29,7 @@ counter_ok = 0
 counter_fail = 0
 counter_tot = 0
 
-#
+# Parameters that control the amount of insulin injected by the pump experimentally found 
 a =  1040       # original value 1.0
 b =  1.95       # original value 0.001
 
@@ -38,7 +38,7 @@ lower_limit = 70
 
 #
 pre_average = 0
-delay = 0
+delay = 0.6
 enable_sleep = False
 
 # Start counting time to run n Simulation
@@ -89,7 +89,7 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
     omc.sendExpression("loadFile(\"monitor_average.mo\")")
     omc.sendExpression("getErrorString()")
 
-    omc.sendExpression("loadFile(\"monitor_hipogli.mo\")")
+    omc.sendExpression("loadFile(\"monitor_hypogly.mo\")")
     omc.sendExpression("getErrorString()")
 
     omc.sendExpression("loadFile(\"System.mo\")")
@@ -112,7 +112,7 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
         "rag.K.BW="+str(rand_BW)+"\n"+
         "pu.a="+str(a)+"\n"+
         "pu.b="+str(b)+"\n"+
-        "mo_hi.correction="+str(lower_limit)+"\n"
+        "mo_hy.correction="+str(lower_limit)+"\n"
         )
         f.flush()
         os.fsync(f)
@@ -120,11 +120,16 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
     os.system("./System -s=rungekutta -overrideFile=parameters.txt > log")
 
     # Apply the delay only in case there are some duplicate patients
-    if (delay >= 1): 
+    if (delay >= 0.8): 
         prettyln("Delay: "+str(delay)+"s\n", 'r')
         time.sleep(delay)  
+################################################################################################################
+    test = omc.sendExpression("val(mo_hy.min_g_control,"+str(float(sim_time))+", \"System_res.mat\")")
+    print test
+    if (test):
+        os.system("cp parameters.txt hypoglycemic_patient.txt")
 
-    os.system("rm -f parametres.txt")       # to be on the safe Side
+################################################################################################################
 
     # End of a single Simulation
     print "\nSimulation Time:\n"
@@ -144,10 +149,10 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
     # Check for duplicate patients
     if (average == pre_average):
         prettyln("The delay has been activated because the simulation time exceeds the time for writing parameters to the parameters.txt file \n", 'r')
-        delay += 1
+        delay += 0.2
     else: pre_average = average
     
-    # printing patient's values
+    # Patient's values
     print "\nAverage values: "
     print "min glucose: ", min_g
     print "max glucose: ", max_g
@@ -159,7 +164,7 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
             
     Global_Average = Global_Average + average
     
-    #
+    # check for pump failure
     if (fail_pump or low_average or high_average) :  
         counter_fail = counter_fail + 1
         prettyln('fail', 'r')
@@ -170,10 +175,12 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
         prettyln("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n", 'g')
      
     #os.system("rm -f System_res.mat")       # to be on the safe side
+    os.system("rm -f parameters.txt")       # to be on the safe Side
 
 # End n-th Simulation
+os.system("rm -f parameters.txt")
 
-#   
+# Final Results
 counter_tot = counter_ok + counter_fail
 print "\nGlobal Average of glucose: ", Global_Average/counter_tot
 print "\nTotal number of tests: ", counter_tot
@@ -181,6 +188,7 @@ print "Number of test passed: ", counter_ok
 print "Number of tests failed: ", counter_fail,"\n"
 
 print "--- %s seconds ---" % (time.time() - start_time), "\n"
- 
+
+# clean Modelica generated files
 os.system("./clean.sh") 
 

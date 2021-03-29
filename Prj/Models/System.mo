@@ -8,7 +8,7 @@ Rate_Appearance_Glucose rag;    // a model that simulate the rate of meal driven
 
 Monitor_Pump mo_pu;             // a monitor to check if the pump is working correctly during the simulation
 Monitor_Average mo_av;          // a monitor to check if the patient's average values at the end of the simulations are good
-Monitor_Hipogli mo_hi;          // a monitor to control if the patient's glucose level is too low
+Monitor_Hypogly mo_hy;          // a monitor to control if the patient's glucose level is too low
  
 equation
 
@@ -29,9 +29,9 @@ connect(pa.G, mo_pu.glucose_from_patient);
 connect(pa.G, mo_av.glucose_from_patient);
 connect(pu.insulin_out, mo_av.insulin_from_pump);
 
-// Monitor_Hipogli
-connect(pa.G, mo_hi.glucose_from_patient);
-connect(mo_hi.min_g_control, gen.meal_control); 
+// Monitor_Hypogly
+connect(pa.G, mo_hy.glucose_from_patient);
+connect(mo_hy.min_g_control, gen.meal_control); 
 
 
 end System;

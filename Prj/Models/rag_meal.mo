@@ -7,7 +7,7 @@ parameter Real kmax=0.0426 ;
 parameter Real kmin=0.0076 ;
 parameter Real kabs=0.0542 ;
 parameter Real BW=96;
-parameter Real f=0.9;       //fixed at 0.9
+parameter Real f=0.9;       
 end KPar;
 
 
@@ -22,7 +22,7 @@ algorithm
 
 alpha := 5/(2*K.Dose*(1-K.b));		//A7
 
-beta := 5/(2*K.Dose*K.d);		//A8
+beta := 5/(2*K.Dose*K.d);		    //A8
 
 y := K.kmin + ((K.kmax - K.kmin)/2)*(tanh(alpha*(Q - beta*K.Dose)) - tanh(beta*(Q - K.d*K.Dose)) + 2);	//A6
 

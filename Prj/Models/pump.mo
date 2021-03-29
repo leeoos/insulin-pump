@@ -1,22 +1,22 @@
 block Pump
 
 
-InputReal glucose;          //amount of glucose of the patient
-OutputReal insulin_out;     //amount of insulin to give the patient
+InputReal glucose;          // amount of glucose of the patient
+OutputReal insulin_out;     // amount of insulin to give the patient
 
 Real z, err;
 
 parameter Real T = 0.1;   
-parameter Real a = 1040.;           //valore standard: 1.0; 		
-parameter Real b = 1.95;            //valore standard: 0.001; 
-parameter Real ref = 100;           //glucosio desiderato; 
+parameter Real a = 1040.;       // standard value: 1.0; 		
+parameter Real b = 1.95;        // standard value: 0.001; 
+parameter Real ref = 100;       // expeted glucose value; 
 
 initial equation
 insulin_out = 0;
 z = 0;
 
 equation
-err = (glucose - ref);      //differenza tra glucosio ideale e glucosio attuale
+err = (glucose - ref);      
 
 algorithm
 

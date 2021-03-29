@@ -1,4 +1,4 @@
-block Monitor_Hipogli
+block Monitor_Hypogly
 
 InputReal glucose_from_patient;
 
@@ -27,6 +27,7 @@ end if;
 
 end if;
 
+
 if(glucose_from_patient < tmp_min) then
 tmp_min := glucose_from_patient;
 end if;
@@ -35,4 +36,4 @@ sim_step := sim_step + 1;
 
 end when;
 
-end Monitor_Hipogli;
+end Monitor_Hypogly;

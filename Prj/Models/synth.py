@@ -6,6 +6,10 @@ import time
 import os.path
 import random
 
+# Color is a script that implements a function used to print colored text
+# Note: If this causes problems, you can remove it
+# but to do this you also need to edit all calls to
+# pretty or prettyln in plain print
 from color import pretty, prettyln
 
 
@@ -18,6 +22,7 @@ print "done!\n"
 
 sim_time = 2000
 
+# Parameters that control the amount of insulin injected by the pump experimentally found 
 a = 1040.0          # original value 1.0
 b = 1.95            # original value 0.001
 
@@ -82,7 +87,7 @@ while (not(fail_pump) and not(exit_ctrl)):
     omc.sendExpression("loadFile(\"monitor_average.mo\")")
     omc.sendExpression("getErrorString()")
 
-    omc.sendExpression("loadFile(\"monitor_hipogli.mo\")")
+    omc.sendExpression("loadFile(\"monitor_hypogly.mo\")")
     omc.sendExpression("getErrorString()")
 
     omc.sendExpression("loadFile(\"System.mo\")")
@@ -92,7 +97,7 @@ while (not(fail_pump) and not(exit_ctrl)):
     omc.sendExpression("getErrorString()")
     
             
-    # Adjustment of a and b to find best values
+    # Adjustment of 'a' and 'b' to find best values
     a += 20
     b -= 0.05
     
@@ -119,7 +124,7 @@ while (not(fail_pump) and not(exit_ctrl)):
         "rag.K.BW="+str(rand_BW)+"\n"+
         "pu.a="+str(a)+"\n"+
         "pu.b="+str(b)+"\n"+
-        "mo_hi.correction="+str(lower_limit)+"\n"
+        "mo_hy.correction="+str(lower_limit)+"\n"
         )
         f.flush()
         os.fsync(f)
@@ -128,16 +133,15 @@ while (not(fail_pump) and not(exit_ctrl)):
 
     os.system("rm -f parametres.txt")       # to be on the safe Side
 
-    # check for pump falieur
+    # Check for pump failure
     fail_pump = omc.sendExpression("val(mo_pu.controller,"+str(float(sim_time))+", \"System_res.mat\")")     
     
-    #
     if (fail_pump) : 
         println("Pump Fail Simulation Ended \n", 'r')              
         print fail_pump
         break
-        
-    else: 
+    
+    else: # Pump has not fail
         min_g = omc.sendExpression("val(mo_av.min_g,"+str(float(sim_time))+", \"System_res.mat\")")
         max_g = omc.sendExpression("val(mo_av.max_g,"+str(float(sim_time))+", \"System_res.mat\")")
         average = omc.sendExpression("val(mo_av.average,"+str(float(sim_time))+", \"System_res.mat\")")
@@ -171,7 +175,8 @@ while (not(fail_pump) and not(exit_ctrl)):
     i += 1
 
 # End of While Loop
-    
+
+# Fianl Results   
 print "\nBest value of insuline out: ", 
 pretty(str(insulin_out_min), "g") 
 print "at simulation: ", 
@@ -181,6 +186,7 @@ print "a = ", best_a
 print "b = ", best_b, "\n"
 
 print "--- %s seconds ---" % (time.time() - start_time), "\n"
- 
+
+# Clean Modelica generated files
 os.system("./clean.sh ") 
 

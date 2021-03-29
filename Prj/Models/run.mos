@@ -24,7 +24,7 @@ getErrorString();
 loadFile("monitor_average.mo");
 getErrorString();
 
-loadFile("monitor_hipogli.mo");
+loadFile("monitor_hypogly.mo");
 getErrorString();
 
 loadFile("System.mo");
