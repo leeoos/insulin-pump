@@ -38,14 +38,17 @@ getErrorString();
 /* Note: uncomment one of the following plot instruction 
 and comment the others to get the graph you want */
 
-// patient's glucose only:
-//plot({pa.G}, externalWindow=true);
+// patient's glucose:
+plot({pa.G}, externalWindow=true);
 
-// patient's glucose and internal insuline: 
+// patient's glucose and course of meals :
+//plot({pa.G, gen.delta}, externalWindow=true);
+
+// patient's internal insulin: 
 //plot({pa.G, pa.I}, externalWindow=true);
 
-// patient's glucose and internal insuline and insulin from pump
-plot({pa.G, pa.I, pa.insulin_from_pump}, externalWindow=true);
+// insulin injected by the pump
+//plot({pa.insulin_from_pump}, externalWindow=true);
 
 // meal generation process
 //plot({gen.delta, gen.meal_on, gen.meal_off}, externalWindow=true);

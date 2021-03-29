@@ -50,7 +50,7 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
     print "\nPatient ", i, "\n"
 
     rand_b= round(random.uniform(0.5841, 0.8282),4)         # original value 0.7328
-    rand_d= round(random.uniform(0.061, 0.1436),4)          # original value 0.1014
+    rand_d= round(random.uniform(0.0610, 0.1436),4)          # original value 0.1014
     rand_kmax= round(random.uniform(0.0318,0.0869),4)       # original value 0.0426 
     rand_kmin= round(random.uniform(0.0066, 0.01),4)        # original value 0.0076 
     rand_kabs= round(random.uniform(0.0293, 0.1),4)         # original value 0.0542 
@@ -123,13 +123,6 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
     if (delay >= 0.8): 
         prettyln("Delay: "+str(delay)+"s\n", 'r')
         time.sleep(delay)  
-################################################################################################################
-    test = omc.sendExpression("val(mo_hy.min_g_control,"+str(float(sim_time))+", \"System_res.mat\")")
-    print test
-    if (test):
-        os.system("cp parameters.txt hypoglycemic_patient.txt")
-
-################################################################################################################
 
     # End of a single Simulation
     print "\nSimulation Time:\n"

@@ -1,6 +1,5 @@
 class System
 
-
 MealGenerator gen;              // a generator that generates the meal
 Patient pa;                     // a patient that has an insulin pump
 Pump pu;                        // the insulin pump that injects the patient with insulin  

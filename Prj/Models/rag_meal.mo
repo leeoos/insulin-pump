@@ -1,13 +1,14 @@
-
+/* Note: It is possible to swap the original values with the commented ones 
+to simulate a hypoglycemic patient */
 record KPar "system parameters"
-parameter Real Dose=105;       
-parameter Real b=0.7328;
-parameter Real d=0.1014;
-parameter Real kmax=0.0426 ;
-parameter Real kmin=0.0076 ;
-parameter Real kabs=0.0542 ;
-parameter Real BW=96;
-parameter Real f=0.9;       
+parameter Real Dose=105;            // fixed      
+parameter Real b=0.7328;            // 0.7336;
+parameter Real d=0.1014;            // 0.1158;
+parameter Real kmax=0.0426 ;        // 0.0661;
+parameter Real kmin=0.0076 ;        // 0.0094;
+parameter Real kabs=0.0542 ;        // 0.0843;
+parameter Real BW=96;               // 97.45;
+parameter Real f=0.9;               // fixed
 end KPar;
 
 
