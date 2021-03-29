@@ -155,8 +155,6 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
         print "The average glucose value is too high: ", average
     else: print "average glucose: ", average
             
-    Global_Average = Global_Average + average
-    
     # check for pump failure
     if (fail_pump or low_average or high_average) :  
         counter_fail = counter_fail + 1
@@ -166,7 +164,9 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
         counter_ok = counter_ok + 1
         prettyln('pass', 'g')
         prettyln("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n", 'g')
-     
+    
+    Global_Average = Global_Average + average
+
     #os.system("rm -f System_res.mat")       # to be on the safe side
     os.system("rm -f parameters.txt")       # to be on the safe Side
 
