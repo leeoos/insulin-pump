@@ -14,14 +14,17 @@ from color import pretty, prettyln
 
 from OMPython import OMCSessionZMQ
 
-# Remove previos executable, if any ...
+# Remove previous executable, if any ...
 print '\nremoving old System (if any) ...'
-os.system("rm -f ./System")    
+os.system("rm -f ./System")
 print "done!\n"
 
 # Simulation time and number of patient to test ...
 sim_time = 2000
-num_of_patient = 100
+num_of_patient = 10000
+
+# Remove previous output file, if any ...
+os.system("rm -f Output"+str(num_of_patient)+".txt")   
 
 # Initializes total average glucose across all simulations and the test counter
 Global_Average = 0
@@ -29,17 +32,24 @@ counter_ok = 0
 counter_fail = 0
 counter_tot = 0
 
-# Parameters that control the amount of insulin injected by the pump experimentally found 
+# Parameters to control the amount of insulin injected by the pump experimentally found 
 a =  1040       # original value 1.0
 b =  1.95       # original value 0.001
 
 # Minimum acceptable blood glucose value
 lower_limit = 70
 
-#
-pre_average = 0
-delay = 0.6
-enable_sleep = False
+# To prevent overwriting in parameters.txt
+pre_average = 0         # store the glucose average value in the previous simulation
+delay = 0.6             
+enable_sleep = False    # signal to trigger the delay
+
+# Generate an Output.txt files
+os.system("echo Output >> Output"+str(num_of_patient)+".txt")
+
+# Note: if you want to store the experimental results in Output.txt 
+# set the following variable to True
+output = True
 
 # Start counting time to run n Simulation
 start_time = time.time()
@@ -50,7 +60,7 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
     print "\nPatient ", i, "\n"
 
     rand_b= round(random.uniform(0.5841, 0.8282),4)         # original value 0.7328
-    rand_d= round(random.uniform(0.0610, 0.1436),4)          # original value 0.1014
+    rand_d= round(random.uniform(0.0610, 0.1436),4)         # original value 0.1014
     rand_kmax= round(random.uniform(0.0318,0.0869),4)       # original value 0.0426 
     rand_kmin= round(random.uniform(0.0066, 0.01),4)        # original value 0.0076 
     rand_kabs= round(random.uniform(0.0293, 0.1),4)         # original value 0.0542 
@@ -98,7 +108,7 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
     omc.sendExpression("buildModel(System, stopTime="+str(float(sim_time))+")")
     omc.sendExpression("getErrorString()")
 
-    # Write patient parameters in parameters.txt and run simulation with new values
+    # Write patient parameters to parameters.txt and run simulation with new values
     with open ("parameters.txt", 'wt') as f:                
         f.write(
         #"gen.Meal_length="+str(rand_meal_len)+"\n"+
@@ -128,7 +138,6 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
     print "\nSimulation Time:\n"
     print "--- %s seconds ---" % (time.time() - get_sim_time), "\n"
     
-
     # Get control variables from monitors
     fail_pump = omc.sendExpression("val(mo_pu.controller,"+str(float(sim_time))+", \"System_res.mat\")")
     low_average = omc.sendExpression("val(mo_av.low_average,"+str(float(sim_time))+", \"System_res.mat\")")
@@ -140,33 +149,45 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
     average = omc.sendExpression("val(mo_av.average,"+str(float(sim_time))+", \"System_res.mat\")")
 
     # Check for duplicate patients
-    if (average == pre_average):
+    if (average == pre_average):    
         prettyln("The delay has been activated because the simulation time exceeds the time for writing parameters to the parameters.txt file \n", 'r')
         delay += 0.2
     else: pre_average = average
     
-    # Patient's values
-    print "\nAverage values: "
-    print "min glucose: ", min_g
-    print "max glucose: ", max_g
-    if (low_average):
-        print "The average glucose value is too low: ", average
-    elif (high_average): 
-        print "The average glucose value is too high: ", average
-    else: print "average glucose: ", average
-            
-    # check for pump failure
-    if (fail_pump or low_average or high_average) :  
-        counter_fail = counter_fail + 1
-        prettyln('fail', 'r')
-        prettyln("---------------------------------------------------------------------------------------------------------------------------------\n", 'r')         
-    else : 
-        counter_ok = counter_ok + 1
-        prettyln('pass', 'g')
-        prettyln("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n", 'g')
     
-    Global_Average = Global_Average + average
+    if (not(output)):
+        # Patient's values
+        print "\nAverage values: "
+        print "min glucose: ", min_g
+        print "max glucose: ", max_g
+        if (low_average):
+            print "The average glucose value is too low: ", average
+        elif (high_average): 
+            print "The average glucose value is too high: ", average
+        else: print "average glucose: ", average
+                
+        # check for pump failure
+        if (fail_pump or low_average or high_average) :  
+            counter_fail = counter_fail + 1
+            prettyln('fail', 'r')
+            prettyln("---------------------------------------------------------------------------------------------------------------------------------\n", 'r')         
+        else : 
+            counter_ok = counter_ok + 1
+            prettyln('pass', 'g')
+            prettyln("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n", 'g')
 
+        Global_Average = Global_Average + average
+    
+    else:
+        # Write the  Experimental Results to Output.txt
+        test = lambda x : "fail" if(x) else "pass"
+        with open ("Output"+str(num_of_patient)+".txt", 'a') as f:                
+            f.write(
+            "test "+str(i+1)+": glucose average = "+str(average)+" "+test(fail_pump)+'\n'
+            )
+            f.flush()
+            os.fsync(f)
+  
     #os.system("rm -f System_res.mat")       # to be on the safe side
     os.system("rm -f parameters.txt")       # to be on the safe Side
 
@@ -174,13 +195,24 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
 os.system("rm -f parameters.txt")
 
 # Final Results
-counter_tot = counter_ok + counter_fail
-print "\nGlobal Average of glucose: ", Global_Average/counter_tot
-print "\nTotal number of tests: ", counter_tot
-print "Number of test passed: ", counter_ok
-print "Number of tests failed: ", counter_fail,"\n"
+if (not(output)): 
+    os.system("rm -f Output"+str(num_of_patient)+".txt")
+    counter_tot = counter_ok + counter_fail
+    print "\nGlobal Average of glucose: ", Global_Average/counter_tot
+    print "\nTotal number of tests: ", counter_tot
+    print "Number of test passed: ", counter_ok
+    print "Number of tests failed: ", counter_fail,"\n"
 
-print "--- %s seconds ---" % (time.time() - start_time), "\n"
+    print"Total Simulation Time:\n"
+    print "--- %s seconds ---" % (time.time() - start_time), "\n"
+
+else: # Write the total simulation times to Output.txt
+    with open ("Output"+str(num_of_patient)+".txt", 'a') as f:                
+        f.write(
+        "Total Simulation Time: "+"%s seconds" % (time.time() - start_time)+"\n"
+        )
+        f.flush()
+        os.fsync(f)
 
 # clean Modelica generated files
 os.system("./clean.sh") 
