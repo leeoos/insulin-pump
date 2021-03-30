@@ -999,4 +999,7 @@ test 997: glucose average = 101.501669752 pass
 test 998: glucose average = 100.428884095 pass
 test 999: glucose average = 100.455189284 pass
 test 1000: glucose average = 101.961094711 pass
+Total number of tests: 1000
+Number of test passed: 1000
+Number of tests failed: 0
 Total Simulation Time: 1031.37884307 seconds

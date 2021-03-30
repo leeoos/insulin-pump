@@ -1,0 +1,1202 @@
+Output
+Patient 1 dataset:
+rag.K.b=0.688
+rag.K.d=0.083
+rag.K.kmax=0.0652
+rag.K.kmin=0.0082
+rag.K.kabs=0.0928
+rag.K.BW=102.26
+Best value of insuline out: 41735989.7598 at simulation: 9 with: 
+a = 1220.0
+b = 0.87
+Simulation Time: 15.1310868263 seconds
+
+Patient 2 dataset:
+rag.K.b=0.6142
+rag.K.d=0.0858
+rag.K.kmax=0.073
+rag.K.kmin=0.0072
+rag.K.kabs=0.0436
+rag.K.BW=93.01
+Best value of insuline out: 46219216.5515 at simulation: 15 with: 
+a = 1340.0
+b = 0.15
+Simulation Time: 15.3293619156 seconds
+
+Patient 3 dataset:
+rag.K.b=0.593
+rag.K.d=0.1016
+rag.K.kmax=0.0654
+rag.K.kmin=0.0078
+rag.K.kabs=0.0472
+rag.K.BW=102.61
+Best value of insuline out: 41895696.333 at simulation: 13 with: 
+a = 1300.0
+b = 0.39
+Simulation Time: 16.1744890213 seconds
+
+Patient 4 dataset:
+rag.K.b=0.6912
+rag.K.d=0.0628
+rag.K.kmax=0.0738
+rag.K.kmin=0.0085
+rag.K.kabs=0.0752
+rag.K.BW=90.57
+Best value of insuline out: 46955272.7487 at simulation: 9 with: 
+a = 1220.0
+b = 0.87
+Simulation Time: 14.9397768974 seconds
+
+Patient 5 dataset:
+rag.K.b=0.8055
+rag.K.d=0.1313
+rag.K.kmax=0.084
+rag.K.kmin=0.0078
+rag.K.kabs=0.0816
+rag.K.BW=101.67
+Best value of insuline out: 41086256.3238 at simulation: 6 with: 
+a = 1160.0
+b = 1.23
+Simulation Time: 15.5399730206 seconds
+
+Patient 6 dataset:
+rag.K.b=0.7709
+rag.K.d=0.1048
+rag.K.kmax=0.0696
+rag.K.kmin=0.0075
+rag.K.kabs=0.0841
+rag.K.BW=101.12
+Best value of insuline out: 42105835.9703 at simulation: 9 with: 
+a = 1220.0
+b = 0.87
+Simulation Time: 14.8746731281 seconds
+
+Patient 7 dataset:
+rag.K.b=0.679
+rag.K.d=0.101
+rag.K.kmax=0.0592
+rag.K.kmin=0.0092
+rag.K.kabs=0.0392
+rag.K.BW=102.31
+Best value of insuline out: 25917864.8922 at simulation: 9 with: 
+a = 1220.0
+b = 0.87
+Simulation Time: 15.5888271332 seconds
+
+Patient 8 dataset:
+rag.K.b=0.826
+rag.K.d=0.1048
+rag.K.kmax=0.047
+rag.K.kmin=0.0097
+rag.K.kabs=0.0556
+rag.K.BW=103.12
+Best value of insuline out: 25660005.1246 at simulation: 10 with: 
+a = 1240.0
+b = 0.75
+Simulation Time: 15.9593629837 seconds
+
+Patient 9 dataset:
+rag.K.b=0.8217
+rag.K.d=0.0705
+rag.K.kmax=0.0559
+rag.K.kmin=0.0092
+rag.K.kabs=0.0793
+rag.K.BW=101.37
+Best value of insuline out: 42372464.0866 at simulation: 11 with: 
+a = 1260.0
+b = 0.63
+Simulation Time: 15.3872249126 seconds
+
+Patient 10 dataset:
+rag.K.b=0.7257
+rag.K.d=0.0611
+rag.K.kmax=0.0386
+rag.K.kmin=0.0093
+rag.K.kabs=0.0433
+rag.K.BW=97.25
+Best value of insuline out: 26891533.7687 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.233905077 seconds
+
+Patient 11 dataset:
+rag.K.b=0.7973
+rag.K.d=0.1144
+rag.K.kmax=0.0533
+rag.K.kmin=0.0075
+rag.K.kabs=0.0683
+rag.K.BW=101.77
+Best value of insuline out: 42216360.1104 at simulation: 13 with: 
+a = 1300.0
+b = 0.39
+Simulation Time: 16.2742807865 seconds
+
+Patient 12 dataset:
+rag.K.b=0.59
+rag.K.d=0.0865
+rag.K.kmax=0.0708
+rag.K.kmin=0.0091
+rag.K.kabs=0.047
+rag.K.BW=102.42
+Best value of insuline out: 41993181.0828 at simulation: 12 with: 
+a = 1280.0
+b = 0.51
+Simulation Time: 14.8890960217 seconds
+
+Patient 13 dataset:
+rag.K.b=0.6703
+rag.K.d=0.0921
+rag.K.kmax=0.0743
+rag.K.kmin=0.0067
+rag.K.kabs=0.0681
+rag.K.BW=91.75
+Best value of insuline out: 46451426.8069 at simulation: 9 with: 
+a = 1220.0
+b = 0.87
+Simulation Time: 15.1269640923 seconds
+
+Patient 14 dataset:
+rag.K.b=0.6777
+rag.K.d=0.0679
+rag.K.kmax=0.0546
+rag.K.kmin=0.0087
+rag.K.kabs=0.0311
+rag.K.BW=90.37
+Best value of insuline out: 29120820.2499 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.2046189308 seconds
+
+Patient 15 dataset:
+rag.K.b=0.7571
+rag.K.d=0.0782
+rag.K.kmax=0.0407
+rag.K.kmin=0.0096
+rag.K.kabs=0.0329
+rag.K.BW=97.24
+Best value of insuline out: 26774838.3144 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 14.6401400566 seconds
+
+Patient 16 dataset:
+rag.K.b=0.8116
+rag.K.d=0.0738
+rag.K.kmax=0.0527
+rag.K.kmin=0.0078
+rag.K.kabs=0.0746
+rag.K.BW=89.27
+Best value of insuline out: 48049235.1169 at simulation: 15 with: 
+a = 1340.0
+b = 0.15
+Simulation Time: 15.4969530106 seconds
+
+Patient 17 dataset:
+rag.K.b=0.7051
+rag.K.d=0.126
+rag.K.kmax=0.0399
+rag.K.kmin=0.0092
+rag.K.kabs=0.0374
+rag.K.BW=85.07
+Best value of insuline out: 30664143.262 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.2606210709 seconds
+
+Patient 18 dataset:
+rag.K.b=0.6505
+rag.K.d=0.1062
+rag.K.kmax=0.0322
+rag.K.kmin=0.0076
+rag.K.kabs=0.0862
+rag.K.BW=96.69
+Best value of insuline out: 27138536.3874 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 16.0673949718 seconds
+
+Patient 19 dataset:
+rag.K.b=0.7826
+rag.K.d=0.1123
+rag.K.kmax=0.0496
+rag.K.kmin=0.0069
+rag.K.kabs=0.0322
+rag.K.BW=101.78
+Best value of insuline out: 25790004.8535 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 14.9687271118 seconds
+
+Patient 20 dataset:
+rag.K.b=0.7145
+rag.K.d=0.0787
+rag.K.kmax=0.0357
+rag.K.kmin=0.0093
+rag.K.kabs=0.037
+rag.K.BW=89.56
+Best value of insuline out: 28981501.1138 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.0687420368 seconds
+
+Patient 21 dataset:
+rag.K.b=0.6472
+rag.K.d=0.1401
+rag.K.kmax=0.0646
+rag.K.kmin=0.0086
+rag.K.kabs=0.068
+rag.K.BW=94.17
+Best value of insuline out: 45460808.6199 at simulation: 10 with: 
+a = 1240.0
+b = 0.75
+Simulation Time: 15.0936908722 seconds
+
+Patient 22 dataset:
+rag.K.b=0.5981
+rag.K.d=0.0736
+rag.K.kmax=0.074
+rag.K.kmin=0.007
+rag.K.kabs=0.0845
+rag.K.BW=98.2
+Best value of insuline out: 43153675.101 at simulation: 8 with: 
+a = 1200.0
+b = 0.99
+Simulation Time: 15.7813940048 seconds
+
+Patient 23 dataset:
+rag.K.b=0.7855
+rag.K.d=0.1208
+rag.K.kmax=0.0622
+rag.K.kmin=0.0066
+rag.K.kabs=0.0792
+rag.K.BW=88.19
+Best value of insuline out: 48516458.0659 at simulation: 10 with: 
+a = 1240.0
+b = 0.75
+Simulation Time: 15.2774350643 seconds
+
+Patient 24 dataset:
+rag.K.b=0.6535
+rag.K.d=0.1361
+rag.K.kmax=0.0778
+rag.K.kmin=0.0077
+rag.K.kabs=0.0389
+rag.K.BW=92.84
+Best value of insuline out: 46287149.9909 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.1163599491 seconds
+
+Patient 25 dataset:
+rag.K.b=0.7859
+rag.K.d=0.1345
+rag.K.kmax=0.0424
+rag.K.kmin=0.0074
+rag.K.kabs=0.0428
+rag.K.BW=88.58
+Best value of insuline out: 29627882.9362 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.5918490887 seconds
+
+Patient 26 dataset:
+rag.K.b=0.611
+rag.K.d=0.1002
+rag.K.kmax=0.078
+rag.K.kmin=0.0075
+rag.K.kabs=0.0483
+rag.K.BW=95.36
+Best value of insuline out: 45058041.7156 at simulation: 11 with: 
+a = 1260.0
+b = 0.63
+Simulation Time: 15.2437579632 seconds
+
+Patient 27 dataset:
+rag.K.b=0.8144
+rag.K.d=0.135
+rag.K.kmax=0.0563
+rag.K.kmin=0.0068
+rag.K.kabs=0.0423
+rag.K.BW=87.17
+Best value of insuline out: 30420730.4974 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.0729749203 seconds
+
+Patient 28 dataset:
+rag.K.b=0.6303
+rag.K.d=0.0727
+rag.K.kmax=0.0654
+rag.K.kmin=0.0095
+rag.K.kabs=0.0778
+rag.K.BW=94.1
+Best value of insuline out: 45409983.1932 at simulation: 10 with: 
+a = 1240.0
+b = 0.75
+Simulation Time: 15.6365361214 seconds
+
+Patient 29 dataset:
+rag.K.b=0.6629
+rag.K.d=0.1144
+rag.K.kmax=0.0431
+rag.K.kmin=0.0067
+rag.K.kabs=0.0744
+rag.K.BW=83.16
+Best value of insuline out: 31849515.0819 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.603718996 seconds
+
+Patient 30 dataset:
+rag.K.b=0.7129
+rag.K.d=0.1214
+rag.K.kmax=0.0638
+rag.K.kmin=0.0071
+rag.K.kabs=0.0916
+rag.K.BW=96.26
+Best value of insuline out: 44383993.3709 at simulation: 9 with: 
+a = 1220.0
+b = 0.87
+Simulation Time: 14.9328229427 seconds
+
+Patient 31 dataset:
+rag.K.b=0.6032
+rag.K.d=0.0845
+rag.K.kmax=0.0389
+rag.K.kmin=0.0083
+rag.K.kabs=0.0425
+rag.K.BW=88.49
+Best value of insuline out: 29547755.452 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.1778008938 seconds
+
+Patient 32 dataset:
+rag.K.b=0.78
+rag.K.d=0.098
+rag.K.kmax=0.0357
+rag.K.kmin=0.0087
+rag.K.kabs=0.0715
+rag.K.BW=87.96
+Best value of insuline out: 29882888.8723 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.2203419209 seconds
+
+Patient 33 dataset:
+rag.K.b=0.786
+rag.K.d=0.119
+rag.K.kmax=0.0503
+rag.K.kmin=0.0092
+rag.K.kabs=0.0414
+rag.K.BW=99.4
+Best value of insuline out: 26598151.5608 at simulation: 15 with: 
+a = 1340.0
+b = 0.15
+Simulation Time: 15.3489668369 seconds
+
+Patient 34 dataset:
+rag.K.b=0.6057
+rag.K.d=0.1211
+rag.K.kmax=0.0781
+rag.K.kmin=0.0094
+rag.K.kabs=0.0318
+rag.K.BW=89.92
+Best value of insuline out: 29592087.1176 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.670593977 seconds
+
+Patient 35 dataset:
+rag.K.b=0.596
+rag.K.d=0.0759
+rag.K.kmax=0.0378
+rag.K.kmin=0.0073
+rag.K.kabs=0.0377
+rag.K.BW=84.19
+Best value of insuline out: 30915234.9549 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 14.8220357895 seconds
+
+Patient 36 dataset:
+rag.K.b=0.7259
+rag.K.d=0.1041
+rag.K.kmax=0.0405
+rag.K.kmin=0.0078
+rag.K.kabs=0.0447
+rag.K.BW=94.22
+Best value of insuline out: 27840781.9022 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.913383007 seconds
+
+Patient 37 dataset:
+rag.K.b=0.7239
+rag.K.d=0.1099
+rag.K.kmax=0.0706
+rag.K.kmin=0.0085
+rag.K.kabs=0.0542
+rag.K.BW=92.2
+Best value of insuline out: 46508133.0777 at simulation: 11 with: 
+a = 1260.0
+b = 0.63
+Simulation Time: 15.5609068871 seconds
+
+Patient 38 dataset:
+rag.K.b=0.6805
+rag.K.d=0.0677
+rag.K.kmax=0.0568
+rag.K.kmin=0.0081
+rag.K.kabs=0.05
+rag.K.BW=89.71
+Best value of insuline out: 47665061.0034 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 16.2104370594 seconds
+
+Patient 39 dataset:
+rag.K.b=0.6883
+rag.K.d=0.09
+rag.K.kmax=0.0341
+rag.K.kmin=0.0077
+rag.K.kabs=0.0894
+rag.K.BW=99.76
+Best value of insuline out: 26393633.7522 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.0811028481 seconds
+
+Patient 40 dataset:
+rag.K.b=0.6675
+rag.K.d=0.1028
+rag.K.kmax=0.0846
+rag.K.kmin=0.0091
+rag.K.kabs=0.0977
+rag.K.BW=89.81
+Best value of insuline out: 45919011.8688 at simulation: 5 with: 
+a = 1140.0
+b = 1.35
+Simulation Time: 15.2566840649 seconds
+
+Patient 41 dataset:
+rag.K.b=0.7041
+rag.K.d=0.083
+rag.K.kmax=0.0441
+rag.K.kmin=0.0082
+rag.K.kabs=0.0302
+rag.K.BW=96.56
+Best value of insuline out: 27011713.9038 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.8505599499 seconds
+
+Patient 42 dataset:
+rag.K.b=0.7725
+rag.K.d=0.0642
+rag.K.kmax=0.0318
+rag.K.kmin=0.0089
+rag.K.kabs=0.0995
+rag.K.BW=94.24
+Best value of insuline out: 27864627.5121 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.5142228603 seconds
+
+Patient 43 dataset:
+rag.K.b=0.6248
+rag.K.d=0.1346
+rag.K.kmax=0.0453
+rag.K.kmin=0.0097
+rag.K.kabs=0.0838
+rag.K.BW=85.18
+Best value of insuline out: 31159880.4732 at simulation: 1 with: 
+a = 1060.0
+b = 1.83
+Simulation Time: 15.1543030739 seconds
+
+Patient 44 dataset:
+rag.K.b=0.7975
+rag.K.d=0.1103
+rag.K.kmax=0.0669
+rag.K.kmin=0.0067
+rag.K.kabs=0.067
+rag.K.BW=83.24
+Best value of insuline out: 51335997.6246 at simulation: 11 with: 
+a = 1260.0
+b = 0.63
+Simulation Time: 15.5947158337 seconds
+
+Patient 45 dataset:
+rag.K.b=0.708
+rag.K.d=0.0811
+rag.K.kmax=0.0536
+rag.K.kmin=0.0077
+rag.K.kabs=0.0788
+rag.K.BW=101.34
+Best value of insuline out: 42416693.5401 at simulation: 12 with: 
+a = 1280.0
+b = 0.51
+Simulation Time: 15.7517580986 seconds
+
+Patient 46 dataset:
+rag.K.b=0.606
+rag.K.d=0.1176
+rag.K.kmax=0.0441
+rag.K.kmin=0.0081
+rag.K.kabs=0.0634
+rag.K.BW=96.53
+Best value of insuline out: 27457435.0682 at simulation: 15 with: 
+a = 1340.0
+b = 0.15
+Simulation Time: 14.9675350189 seconds
+
+Patient 47 dataset:
+rag.K.b=0.5906
+rag.K.d=0.1361
+rag.K.kmax=0.0709
+rag.K.kmin=0.0096
+rag.K.kabs=0.0738
+rag.K.BW=85.02
+Best value of insuline out: 50106206.473 at simulation: 10 with: 
+a = 1240.0
+b = 0.75
+Simulation Time: 15.2637569904 seconds
+
+Patient 48 dataset:
+rag.K.b=0.7778
+rag.K.d=0.0683
+rag.K.kmax=0.0557
+rag.K.kmin=0.0073
+rag.K.kabs=0.0829
+rag.K.BW=92.71
+Best value of insuline out: 46309474.6176 at simulation: 12 with: 
+a = 1280.0
+b = 0.51
+Simulation Time: 15.3526339531 seconds
+
+Patient 49 dataset:
+rag.K.b=0.6623
+rag.K.d=0.1316
+rag.K.kmax=0.0413
+rag.K.kmin=0.01
+rag.K.kabs=0.0502
+rag.K.BW=87.48
+Best value of insuline out: 30049581.5365 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.3497719765 seconds
+
+Patient 50 dataset:
+rag.K.b=0.7422
+rag.K.d=0.1248
+rag.K.kmax=0.0726
+rag.K.kmin=0.0068
+rag.K.kabs=0.052
+rag.K.BW=97.25
+Best value of insuline out: 44132985.8584 at simulation: 11 with: 
+a = 1260.0
+b = 0.63
+Simulation Time: 15.1711950302 seconds
+
+Patient 51 dataset:
+rag.K.b=0.8205
+rag.K.d=0.0931
+rag.K.kmax=0.0756
+rag.K.kmin=0.0083
+rag.K.kabs=0.0489
+rag.K.BW=90.0
+Best value of insuline out: 47707167.4054 at simulation: 12 with: 
+a = 1280.0
+b = 0.51
+Simulation Time: 15.6274621487 seconds
+
+Patient 52 dataset:
+rag.K.b=0.6789
+rag.K.d=0.0769
+rag.K.kmax=0.0676
+rag.K.kmin=0.0078
+rag.K.kabs=0.045
+rag.K.BW=97.02
+Best value of insuline out: 44295066.9326 at simulation: 15 with: 
+a = 1340.0
+b = 0.15
+Simulation Time: 15.8425869942 seconds
+
+Patient 53 dataset:
+rag.K.b=0.7141
+rag.K.d=0.0722
+rag.K.kmax=0.0705
+rag.K.kmin=0.0081
+rag.K.kabs=0.0555
+rag.K.BW=91.6
+Best value of insuline out: 46788565.8888 at simulation: 11 with: 
+a = 1260.0
+b = 0.63
+Simulation Time: 15.3081688881 seconds
+
+Patient 54 dataset:
+rag.K.b=0.6332
+rag.K.d=0.1129
+rag.K.kmax=0.0421
+rag.K.kmin=0.0098
+rag.K.kabs=0.0759
+rag.K.BW=87.45
+Best value of insuline out: 30284838.4487 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.7041549683 seconds
+
+Patient 55 dataset:
+rag.K.b=0.6743
+rag.K.d=0.0688
+rag.K.kmax=0.077
+rag.K.kmin=0.0079
+rag.K.kabs=0.0406
+rag.K.BW=83.57
+Best value of insuline out: 51284598.6798 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.0627369881 seconds
+
+Patient 56 dataset:
+rag.K.b=0.6021
+rag.K.d=0.0892
+rag.K.kmax=0.0495
+rag.K.kmin=0.01
+rag.K.kabs=0.0537
+rag.K.BW=100.48
+Best value of insuline out: 26236084.7649 at simulation: 1 with: 
+a = 1060.0
+b = 1.83
+Simulation Time: 14.879046917 seconds
+
+Patient 57 dataset:
+rag.K.b=0.7229
+rag.K.d=0.11
+rag.K.kmax=0.0557
+rag.K.kmin=0.0079
+rag.K.kabs=0.0771
+rag.K.BW=84.24
+Best value of insuline out: 50883369.5608 at simulation: 14 with: 
+a = 1320.0
+b = 0.27
+Simulation Time: 14.7523200512 seconds
+
+Patient 58 dataset:
+rag.K.b=0.6205
+rag.K.d=0.0793
+rag.K.kmax=0.0358
+rag.K.kmin=0.0089
+rag.K.kabs=0.0405
+rag.K.BW=85.62
+Best value of insuline out: 30375400.6749 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 14.7799100876 seconds
+
+Patient 59 dataset:
+rag.K.b=0.61
+rag.K.d=0.0962
+rag.K.kmax=0.0336
+rag.K.kmin=0.0085
+rag.K.kabs=0.0599
+rag.K.BW=85.35
+Best value of insuline out: 30615327.1984 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 14.9427998066 seconds
+
+Patient 60 dataset:
+rag.K.b=0.7085
+rag.K.d=0.1162
+rag.K.kmax=0.0496
+rag.K.kmin=0.0093
+rag.K.kabs=0.0949
+rag.K.BW=96.49
+Best value of insuline out: 44571498.7045 at simulation: 15 with: 
+a = 1340.0
+b = 0.15
+Simulation Time: 15.3697659969 seconds
+
+Patient 61 dataset:
+rag.K.b=0.7764
+rag.K.d=0.0908
+rag.K.kmax=0.0812
+rag.K.kmin=0.0068
+rag.K.kabs=0.096
+rag.K.BW=91.38
+Best value of insuline out: 45548691.0835 at simulation: 6 with: 
+a = 1160.0
+b = 1.23
+Simulation Time: 15.7084410191 seconds
+
+Patient 62 dataset:
+rag.K.b=0.7075
+rag.K.d=0.0814
+rag.K.kmax=0.0476
+rag.K.kmin=0.0068
+rag.K.kabs=0.0825
+rag.K.BW=87.77
+Best value of insuline out: 48751902.629 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.4845020771 seconds
+
+Patient 63 dataset:
+rag.K.b=0.7361
+rag.K.d=0.1273
+rag.K.kmax=0.0677
+rag.K.kmin=0.0076
+rag.K.kabs=0.0778
+rag.K.BW=83.87
+Best value of insuline out: 50834532.1029 at simulation: 10 with: 
+a = 1240.0
+b = 0.75
+Simulation Time: 15.2394180298 seconds
+
+Patient 64 dataset:
+rag.K.b=0.7525
+rag.K.d=0.0659
+rag.K.kmax=0.0741
+rag.K.kmin=0.0079
+rag.K.kabs=0.0653
+rag.K.BW=94.38
+Best value of insuline out: 45205761.9497 at simulation: 9 with: 
+a = 1220.0
+b = 0.87
+Simulation Time: 15.9728569984 seconds
+
+Patient 65 dataset:
+rag.K.b=0.7142
+rag.K.d=0.1346
+rag.K.kmax=0.0693
+rag.K.kmin=0.0078
+rag.K.kabs=0.0427
+rag.K.BW=95.47
+Best value of insuline out: 44995397.578 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.7965471745 seconds
+
+Patient 66 dataset:
+rag.K.b=0.5902
+rag.K.d=0.0978
+rag.K.kmax=0.0571
+rag.K.kmin=0.007
+rag.K.kabs=0.0503
+rag.K.BW=95.52
+Best value of insuline out: 44851989.9853 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.4567301273 seconds
+
+Patient 67 dataset:
+rag.K.b=0.7269
+rag.K.d=0.0926
+rag.K.kmax=0.0514
+rag.K.kmin=0.0077
+rag.K.kabs=0.0416
+rag.K.BW=86.05
+Best value of insuline out: 30688791.7923 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 14.9557108879 seconds
+
+Patient 68 dataset:
+rag.K.b=0.8103
+rag.K.d=0.1123
+rag.K.kmax=0.0699
+rag.K.kmin=0.0099
+rag.K.kabs=0.046
+rag.K.BW=101.33
+Best value of insuline out: 42449557.709 at simulation: 13 with: 
+a = 1300.0
+b = 0.39
+Simulation Time: 15.6081819534 seconds
+
+Patient 69 dataset:
+rag.K.b=0.7943
+rag.K.d=0.0662
+rag.K.kmax=0.0698
+rag.K.kmin=0.0078
+rag.K.kabs=0.0829
+rag.K.BW=88.05
+Best value of insuline out: 48340468.1967 at simulation: 9 with: 
+a = 1220.0
+b = 0.87
+Simulation Time: 15.1148409843 seconds
+
+Patient 70 dataset:
+rag.K.b=0.7269
+rag.K.d=0.1262
+rag.K.kmax=0.043
+rag.K.kmin=0.01
+rag.K.kabs=0.0786
+rag.K.BW=85.3
+Best value of insuline out: 31078271.6011 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 14.5078158379 seconds
+
+Patient 71 dataset:
+rag.K.b=0.734
+rag.K.d=0.0846
+rag.K.kmax=0.0518
+rag.K.kmin=0.0072
+rag.K.kabs=0.0534
+rag.K.BW=86.81
+Best value of insuline out: 49118849.0113 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.5085020065 seconds
+
+Patient 72 dataset:
+rag.K.b=0.7405
+rag.K.d=0.0929
+rag.K.kmax=0.0814
+rag.K.kmin=0.0071
+rag.K.kabs=0.059
+rag.K.BW=94.9
+Best value of insuline out: 44979209.0302 at simulation: 9 with: 
+a = 1220.0
+b = 0.87
+Simulation Time: 15.8081660271 seconds
+
+Patient 73 dataset:
+rag.K.b=0.708
+rag.K.d=0.1096
+rag.K.kmax=0.0467
+rag.K.kmin=0.0083
+rag.K.kabs=0.053
+rag.K.BW=93.89
+Best value of insuline out: 28200429.3724 at simulation: 15 with: 
+a = 1340.0
+b = 0.15
+Simulation Time: 16.7029070854 seconds
+
+Patient 74 dataset:
+rag.K.b=0.6766
+rag.K.d=0.112
+rag.K.kmax=0.086
+rag.K.kmin=0.0096
+rag.K.kabs=0.0819
+rag.K.BW=91.47
+Best value of insuline out: 45594982.9091 at simulation: 6 with: 
+a = 1160.0
+b = 1.23
+Simulation Time: 16.6984698772 seconds
+
+Patient 75 dataset:
+rag.K.b=0.7825
+rag.K.d=0.0779
+rag.K.kmax=0.0849
+rag.K.kmin=0.0096
+rag.K.kabs=0.0928
+rag.K.BW=100.56
+Best value of insuline out: 41008841.6629 at simulation: 5 with: 
+a = 1140.0
+b = 1.35
+Simulation Time: 16.4095699787 seconds
+
+Patient 76 dataset:
+rag.K.b=0.602
+rag.K.d=0.1225
+rag.K.kmax=0.0645
+rag.K.kmin=0.0068
+rag.K.kabs=0.092
+rag.K.BW=94.28
+Best value of insuline out: 45288474.7903 at simulation: 9 with: 
+a = 1220.0
+b = 0.87
+Simulation Time: 16.6459879875 seconds
+
+Patient 77 dataset:
+rag.K.b=0.7879
+rag.K.d=0.1194
+rag.K.kmax=0.0426
+rag.K.kmin=0.0089
+rag.K.kabs=0.096
+rag.K.BW=85.16
+Best value of insuline out: 31193737.2851 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 16.3853168488 seconds
+
+Patient 78 dataset:
+rag.K.b=0.5984
+rag.K.d=0.133
+rag.K.kmax=0.0862
+rag.K.kmin=0.0072
+rag.K.kabs=0.0788
+rag.K.BW=97.02
+Best value of insuline out: 43067902.0898 at simulation: 6 with: 
+a = 1160.0
+b = 1.23
+Simulation Time: 16.138324976 seconds
+
+Patient 79 dataset:
+rag.K.b=0.7499
+rag.K.d=0.0747
+rag.K.kmax=0.0473
+rag.K.kmin=0.0079
+rag.K.kabs=0.0397
+rag.K.BW=93.61
+Best value of insuline out: 28131691.1969 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 16.3843510151 seconds
+
+Patient 80 dataset:
+rag.K.b=0.6275
+rag.K.d=0.0861
+rag.K.kmax=0.0731
+rag.K.kmin=0.0096
+rag.K.kabs=0.0975
+rag.K.BW=96.37
+Best value of insuline out: 43845948.8294 at simulation: 8 with: 
+a = 1200.0
+b = 0.99
+Simulation Time: 16.0853409767 seconds
+
+Patient 81 dataset:
+rag.K.b=0.7983
+rag.K.d=0.1418
+rag.K.kmax=0.0353
+rag.K.kmin=0.0082
+rag.K.kabs=0.0808
+rag.K.BW=96.78
+Best value of insuline out: 27208030.2128 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 16.3950209618 seconds
+
+Patient 82 dataset:
+rag.K.b=0.8046
+rag.K.d=0.1046
+rag.K.kmax=0.0352
+rag.K.kmin=0.0068
+rag.K.kabs=0.0708
+rag.K.BW=95.63
+Best value of insuline out: 27476202.523 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 16.6075289249 seconds
+
+Patient 83 dataset:
+rag.K.b=0.6295
+rag.K.d=0.1069
+rag.K.kmax=0.0537
+rag.K.kmin=0.009
+rag.K.kabs=0.0932
+rag.K.BW=87.94
+Best value of insuline out: 48826761.7898 at simulation: 13 with: 
+a = 1300.0
+b = 0.39
+Simulation Time: 16.5247709751 seconds
+
+Patient 84 dataset:
+rag.K.b=0.636
+rag.K.d=0.1307
+rag.K.kmax=0.0732
+rag.K.kmin=0.0093
+rag.K.kabs=0.0363
+rag.K.BW=98.99
+Best value of insuline out: 26786503.3822 at simulation: 1 with: 
+a = 1060.0
+b = 1.83
+Simulation Time: 17.0009169579 seconds
+
+Patient 85 dataset:
+rag.K.b=0.823
+rag.K.d=0.0791
+rag.K.kmax=0.0466
+rag.K.kmin=0.0087
+rag.K.kabs=0.0926
+rag.K.BW=90.97
+Best value of insuline out: 47108556.4527 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.5883300304 seconds
+
+Patient 86 dataset:
+rag.K.b=0.6114
+rag.K.d=0.0742
+rag.K.kmax=0.0532
+rag.K.kmin=0.0068
+rag.K.kabs=0.0444
+rag.K.BW=99.14
+Best value of insuline out: 26713141.7874 at simulation: 9 with: 
+a = 1220.0
+b = 0.87
+Simulation Time: 14.711386919 seconds
+
+Patient 87 dataset:
+rag.K.b=0.6252
+rag.K.d=0.0627
+rag.K.kmax=0.0705
+rag.K.kmin=0.0066
+rag.K.kabs=0.0467
+rag.K.BW=89.15
+Best value of insuline out: 48161634.8598 at simulation: 14 with: 
+a = 1320.0
+b = 0.27
+Simulation Time: 15.6933789253 seconds
+
+Patient 88 dataset:
+rag.K.b=0.6894
+rag.K.d=0.1223
+rag.K.kmax=0.06
+rag.K.kmin=0.007
+rag.K.kabs=0.0396
+rag.K.BW=97.65
+Best value of insuline out: 27165285.6478 at simulation: 10 with: 
+a = 1240.0
+b = 0.75
+Simulation Time: 16.1500999928 seconds
+
+Patient 89 dataset:
+rag.K.b=0.7798
+rag.K.d=0.0717
+rag.K.kmax=0.0648
+rag.K.kmin=0.009
+rag.K.kabs=0.0727
+rag.K.BW=100.45
+Best value of insuline out: 42590402.1329 at simulation: 10 with: 
+a = 1240.0
+b = 0.75
+Simulation Time: 16.790749073 seconds
+
+Patient 90 dataset:
+rag.K.b=0.7285
+rag.K.d=0.1233
+rag.K.kmax=0.086
+rag.K.kmin=0.0099
+rag.K.kabs=0.097
+rag.K.BW=84.81
+Best value of insuline out: 48548480.9768 at simulation: 5 with: 
+a = 1140.0
+b = 1.35
+Simulation Time: 15.9009730816 seconds
+
+Patient 91 dataset:
+rag.K.b=0.7194
+rag.K.d=0.1076
+rag.K.kmax=0.0601
+rag.K.kmin=0.0082
+rag.K.kabs=0.0506
+rag.K.BW=88.78
+Best value of insuline out: 48240089.4033 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 16.0814669132 seconds
+
+Patient 92 dataset:
+rag.K.b=0.5957
+rag.K.d=0.0861
+rag.K.kmax=0.0683
+rag.K.kmin=0.0086
+rag.K.kabs=0.0383
+rag.K.BW=90.77
+Best value of insuline out: 29206493.6715 at simulation: 1 with: 
+a = 1060.0
+b = 1.83
+Simulation Time: 16.2434568405 seconds
+
+Patient 93 dataset:
+rag.K.b=0.7066
+rag.K.d=0.0651
+rag.K.kmax=0.0357
+rag.K.kmin=0.009
+rag.K.kabs=0.0727
+rag.K.BW=86.29
+Best value of insuline out: 30448892.0144 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.2697548866 seconds
+
+Patient 94 dataset:
+rag.K.b=0.6342
+rag.K.d=0.0864
+rag.K.kmax=0.063
+rag.K.kmin=0.0069
+rag.K.kabs=0.0944
+rag.K.BW=103.51
+Best value of insuline out: 41292275.1013 at simulation: 9 with: 
+a = 1220.0
+b = 0.87
+Simulation Time: 15.0509309769 seconds
+
+Patient 95 dataset:
+rag.K.b=0.6837
+rag.K.d=0.0905
+rag.K.kmax=0.0376
+rag.K.kmin=0.0085
+rag.K.kabs=0.0825
+rag.K.BW=89.54
+Best value of insuline out: 29476537.158 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 16.3344609737 seconds
+
+Patient 96 dataset:
+rag.K.b=0.5843
+rag.K.d=0.1048
+rag.K.kmax=0.0405
+rag.K.kmin=0.0095
+rag.K.kabs=0.0447
+rag.K.BW=83.04
+Best value of insuline out: 31525554.6402 at simulation: 16 with: 
+a = 1360.0
+b = 0.03
+Simulation Time: 15.6326611042 seconds
+
+Patient 97 dataset:
+rag.K.b=0.7606
+rag.K.d=0.0794
+rag.K.kmax=0.0671
+rag.K.kmin=0.0084
+rag.K.kabs=0.0546
+rag.K.BW=94.86
+Best value of insuline out: 45231910.9021 at simulation: 11 with: 
+a = 1260.0
+b = 0.63
+Simulation Time: 14.8754370213 seconds
+
+Patient 98 dataset:
+rag.K.b=0.7584
+rag.K.d=0.0958
+rag.K.kmax=0.0846
+rag.K.kmin=0.0079
+rag.K.kabs=0.0335
+rag.K.BW=102.55
+Best value of insuline out: 25986662.0731 at simulation: 1 with: 
+a = 1060.0
+b = 1.83
+Simulation Time: 14.710062027 seconds
+
+Patient 99 dataset:
+rag.K.b=0.6017
+rag.K.d=0.1007
+rag.K.kmax=0.0701
+rag.K.kmin=0.0083
+rag.K.kabs=0.0835
+rag.K.BW=88.71
+Best value of insuline out: 47969580.7596 at simulation: 9 with: 
+a = 1220.0
+b = 0.87
+Simulation Time: 15.1792080402 seconds
+
+Patient 100 dataset:
+rag.K.b=0.665
+rag.K.d=0.1384
+rag.K.kmax=0.0612
+rag.K.kmin=0.0082
+rag.K.kabs=0.0809
+rag.K.BW=97.25
+Best value of insuline out: 44038570.876 at simulation: 10 with: 
+a = 1240.0
+b = 0.75
+Simulation Time: 14.8995079994 seconds
+
+Total Simulation Time: 1553.66068697 seconds

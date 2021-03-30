@@ -21,7 +21,7 @@ print "done!\n"
 
 # Simulation time and number of patient to test ...
 sim_time = 2000
-num_of_patient = 10000
+num_of_patient = 10
 
 # Remove previous output file, if any ...
 os.system("rm -f Output"+str(num_of_patient)+".txt")   
@@ -65,7 +65,8 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
     rand_kmin= round(random.uniform(0.0066, 0.01),4)        # original value 0.0076 
     rand_kabs= round(random.uniform(0.0293, 0.1),4)         # original value 0.0542 
     rand_BW= round(random.uniform(83.0, 104.0),2)           # original value 96
-
+    
+    # Randomize meal time and period
     #rand_meal_len = random.randint(590,650)
     #rand_meal_period = random.randint(2300,2450)
 
@@ -154,7 +155,6 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
         delay += 0.2
     else: pre_average = average
     
-    
     if (not(output)):
         # Patient's values
         print "\nAverage values: "
@@ -179,6 +179,11 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
         Global_Average = Global_Average + average
     
     else:
+        if (fail_pump or low_average or high_average) :  
+            counter_fail = counter_fail + 1
+        else : 
+            counter_ok = counter_ok + 1
+
         # Write the  Experimental Results to Output.txt
         test = lambda x : "fail" if(x) else "pass"
         with open ("Output"+str(num_of_patient)+".txt", 'a') as f:                
@@ -191,15 +196,14 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
     #os.system("rm -f System_res.mat")       # to be on the safe side
     os.system("rm -f parameters.txt")       # to be on the safe Side
 
-# End n-th Simulation
+# End of n-th Simulation
 os.system("rm -f parameters.txt")
 
 # Final Results
 if (not(output)): 
     os.system("rm -f Output"+str(num_of_patient)+".txt")
-    counter_tot = counter_ok + counter_fail
     print "\nGlobal Average of glucose: ", Global_Average/counter_tot
-    print "\nTotal number of tests: ", counter_tot
+    print "\nTotal number of tests: ", (counter_ok + counter_fail)
     print "Number of test passed: ", counter_ok
     print "Number of tests failed: ", counter_fail,"\n"
 
@@ -209,6 +213,9 @@ if (not(output)):
 else: # Write the total simulation times to Output.txt
     with open ("Output"+str(num_of_patient)+".txt", 'a') as f:                
         f.write(
+        "Total number of tests: "+str(counter_ok + counter_fail)+'\n'
+        "Number of test passed: "+str(counter_ok)+'\n'
+        "Number of tests failed: "+str(counter_fail)+'\n'
         "Total Simulation Time: "+"%s seconds" % (time.time() - start_time)+"\n"
         )
         f.flush()

@@ -99,4 +99,7 @@ test 97: glucose average = 103.35493791 pass
 test 98: glucose average = 101.744479699 pass
 test 99: glucose average = 104.751338672 pass
 test 100: glucose average = 104.519689571 pass
+Total number of tests: 100
+Number of test passed: 100
+Number of tests failed: 0
 Total Simulation Time: 98.3645701408 seconds
