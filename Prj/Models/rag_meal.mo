@@ -20,21 +20,22 @@ output Real y;
 protected Real alpha, beta;
 
 algorithm
+/* equations from diabetes-simulator-in-silico-2020.pdf (appendix) in Insulin-Pump/Requirment */
 
-alpha := 5/(2*K.Dose*(1-K.b));		//A7
+alpha := 5/(2*K.Dose*(1-K.b));		// A7
 
-beta := 5/(2*K.Dose*K.d);		    //A8
+beta := 5/(2*K.Dose*K.d);		    // A8
 
-y := K.kmin + ((K.kmax - K.kmin)/2)*(tanh(alpha*(Q - beta*K.Dose)) - tanh(beta*(Q - K.d*K.Dose)) + 2);	//A6
+y := K.kmin + ((K.kmax - K.kmin)/2)*(tanh(alpha*(Q - beta*K.Dose)) - tanh(beta*(Q - K.d*K.Dose)) + 2);	// A6
 
 end k_empt;
 
 
-
 model Rate_Appearance_Glucose
 
-InputReal delta;
-OutputReal Rameal;
+InputReal delta;            // glucose assimilation parameter
+
+OutputReal Rameal;          // Rate of Glucose Appearance
 
 
 KPar K;
@@ -43,7 +44,7 @@ Real Qsto1(start=0);
 Real Qsto2(start=0);
 Real Qgut(start=0);
 
-initial equation		//A5
+initial equation		// A5
  
 equation
 

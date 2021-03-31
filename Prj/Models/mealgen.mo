@@ -1,8 +1,8 @@
 block MealGenerator
 
-InputBool meal_control;
-OutputReal delta;
+InputBool meal_control;     // indicates that the patient is hypoglycemic and should eat more
 
+OutputReal delta;           // glucose assimilation parameter
 
 parameter Integer Meal_length = 600;    // lenght of meal (minutes) 
 parameter Integer Meal_period = 2400;   // periodic meals: every 4 hours.

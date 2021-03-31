@@ -23,14 +23,14 @@ Ip = Ib * Vi;
 
 equation
 
-/* Revision of equation A2 in ../../Requirement/ 
+/* Revision of equation A2 in Insulin-Pump/Requirement/ 
 to interface with insulin pump */
 
   I  = (Ip + insulin_from_pump)/Vi;
    
   G  = Gp/Vg;
 
-// FAKE PATIENT EQUATIONS!!! Just TO SHOW INTERFACING patient-pump  !! 
+// FAKE PATIENT EQUATIONS : Insulin Kinetics and Glucose Kinetics  
 
   der(Ip) = -(0.1)*Ip + insulin_from_pump + 0.3*Gp;	
   der(Gp) = 20*Rameal - 0.1*Gp - 0.00001*I*Gp;      
