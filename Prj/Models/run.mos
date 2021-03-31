@@ -36,7 +36,7 @@ getErrorString();
 
 // plotting...
 /* Note: uncomment one of the following plot instruction 
-and comment the others to get the graph you want */
+and comment the others to get the chart you want */
 
 // patient's glucose:
 plot({pa.G}, externalWindow=true);
@@ -52,5 +52,6 @@ plot({pa.G}, externalWindow=true);
 
 // meal generation process
 //plot({gen.delta, gen.meal_on, gen.meal_off}, externalWindow=true);
+
 
 getErrorString();

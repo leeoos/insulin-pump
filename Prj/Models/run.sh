@@ -2,5 +2,5 @@
 
 omc run.mos
 
-./clean.sh
+clean.sh
 
