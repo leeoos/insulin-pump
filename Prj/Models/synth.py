@@ -4,15 +4,16 @@ import os.path
 import random
 import sys
 import time
-
 import numpy as np
-from OMPython import OMCSessionZMQ
+
 
 # Color is a script that implements a function used to print colored text
 # Note: If this causes problems, you can remove it
 # but to do this you also need to edit all calls to
 # pretty or prettyln in plain print
 from color import pretty, prettyln
+
+from OMPython import OMCSessionZMQ
 
 # Removing previos executable, if any...
 print '\nremoving old System (if any)...'
@@ -31,7 +32,7 @@ os.system("rm -f Output/Output_Synth/Output"+str(num_of_patient)+".txt")
 lower_limit = 70
 
 # Generate an Output.txt file
-os.system("echo Output/Output_Synth/Output >> Output"+str(num_of_patient)+".txt")
+os.system("echo Output >> Output/Output_Synth/Output"+str(num_of_patient)+".txt")
 
 # To prevent overwriting in parameters.txt
 pre_insulin = 0        # store the insuline value in the previous simulation...
