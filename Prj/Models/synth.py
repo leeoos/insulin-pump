@@ -21,7 +21,7 @@ print "done!\n"
 
 # Simulation time and number of patient to test ...
 sim_time = 2000
-num_of_patient = 10
+num_of_patient = 1000
 
 # Remove previous output file, if any ...
 os.system("rm -f Output"+str(num_of_patient)+".txt")
