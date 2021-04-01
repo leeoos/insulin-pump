@@ -7,7 +7,7 @@ Rate_Appearance_Glucose rag;    // a model that simulate the rate of meal driven
 
 Monitor_Pump mo_pu;             // a monitor to check if the pump is working correctly during the simulation
 Monitor_Average mo_av;          // a monitor to check if the patient's average values at the end of the simulations are good
-Monitor_Hypogly mo_hy;          // a monitor to control if the patient's glucose level is too low
+Monitor_Hypogly mo_hy;          // a monitor to check if the patient's glucose level is too low
  
 equation
 
