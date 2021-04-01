@@ -8,7 +8,7 @@ collects information from a sensor and controls a pump that delivers a controlle
 <h2>What is inside Prj/Models</h2>
 <h3>The main files inside Models are Modelica files and two python scripts:</h3> 
 <ul>
-  <li> <i> mealgen.mo: </i> a generator that defines the period and frequency of the patient's meals</li>
+  <li> <ib> mealgen.mo: </ib> a generator that defines the period and frequency of the patient's meals</li>
   <li> <i> fake_patient.mo: </i> simulate a <i>in-silico</i> patient to which an insulin pump is connected</li>
   <li> <i> pump.mo: </i> simulate the insulin pump that injects the patient with insulin</li>
   <li> <i> rag_meal.mo: </i> a model that simulate the rate of meal driven glucose appearance</li>
@@ -31,7 +31,7 @@ collects information from a sensor and controls a pump that delivers a controlle
 
 <h2>How to Run the code</h2>
 
-<div>The codebase of the system is written in python2.7 and Modellica 1.17.0 so you have to install both. The OMPython interface that allow the scripts to to communicate with OpenModelica is also required and can be install via pip: .</div>
+<div>The codebase of the system is written in python2.7 and Modellica 1.17.0 so you have to install both. The OMPython interface that allow the scripts to to communicate with OpenModelica is also required and can be install via pip: </div>
 <code>pip install OMPython</code>
 <br>
 
