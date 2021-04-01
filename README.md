@@ -49,6 +49,6 @@ collects information from a sensor and controls a pump that delivers a controlle
 <p> to do both things at once:</p>
 <code>./run.sh</code> <br>
 
-<p>Note: Running this command will produce a graph of the patient's glucose level through the simulation. If you want to plot other values, read the comments in <bf>run.mos</bf></p>
+<p>Note: Running this command will produce a graph of the patient's glucose level through the simulation. If you want to plot other values, read the comments in <b>run.mos</b></p>
 
 
