@@ -8,38 +8,38 @@ collects information from a sensor and controls a pump that delivers a controlle
 <h2>What is inside Prj/Models</h2>
 <h3>The main files inside Models are Modelica files and two python scripts:</h3> 
 <ul>
-  <li> <i>mealgen.mo:</ib> a generator that defines the period and frequency of the patient's meals</li>
-  <li> <i>fake_patient.mo:</i> simulate a <i>in-silico</i> patient to which an insulin pump is connected</li>
-  <li> <i>pump.mo:</i> simulate the insulin pump that injects the patient with insulin</li>
-  <li> <i>rag_meal.mo:</i> a model that simulate the rate of meal driven glucose appearance</li>
-  <li> <i>monitor_pump.mo:</i> a monitor to check if the pump is working correctly during the simulation</li>
-  <li> <i>monitor_average.mo:</i> a monitor to check if the patient's average values at the end of the simulations are good</li>
-   <li> <i>monitor_hipogli.mo:</i> a monitor to check if the patient is hypoglycemic</li>
-  <li> <i>connectors.mo:</i> to define the type of connectors </li>
-  <li> <i>System.mo:</i> to link all classes and monitors together</li>
-  <li> <i>run.mos:</i> to build the model and run a single simulation</li>
-  <li> <i>verify.py:</i> to verify that the pump model is correct  </li>
-  <li> <i>synth.py:</i> to find the lowest insulin values needed to keep the patient alive</li> 
+  <li> <b><i>mealgen.mo:</i></b> a generator that defines the period and frequency of the patient's meals</li>
+  <li> <b><i>fake_patient.mo:</i></b> simulate a <i>in-silico</i> patient to which an insulin pump is connected</li>
+  <li> <b><i>pump.mo:</i></b> simulate the insulin pump that injects the patient with insulin</li>
+  <li> <b><i>rag_meal.mo:</i></b> a model that simulate the rate of meal driven glucose appearance</li>
+  <li> <b><i>monitor_pump.mo:</i></b> a monitor to check if the pump is working correctly during the simulation</li>
+  <li> <b><i>monitor_average.mo:</i></b> a monitor to check if the patient's average values at the end of the simulations are good</li>
+   <li> <b><i>monitor_hipogli.mo:</i></b> a monitor to check if the patient is hypoglycemic</li>
+  <li> <b><i>connectors.mo:</i></b> to define the type of connectors </li>
+  <li> <b><i>System.mo:</i></b> to link all classes and monitors together</li>
+  <li> <b><i>run.mos:</i></b> to build the model and run a single simulation</li>
+  <li> <b><i>verify.py:</i></b> to verify that the pump model is correct  </li>
+  <li> <b><i>synth.py:</i></b> to find the lowest insulin values needed to keep the patient alive</li> 
 </ul>
 <h3>The other files are ...</h3>
 <ul>
-  <li> <i>clean.sh:</i> a script to delete the files generated automatically by modelica</li>
-  <li> <i>run.sh:</i> a script to run a single simulation and clean after</li>
-  <li> <i>color.py:</i> a module used to print colored lines in python</li>
-  <li> <i>color.pyc:</i> compiled bytecode of the imported module <i>color</i></li>
+  <li> <b><i>clean.sh:</i></b> a script to delete the files generated automatically by modelica</li>
+  <li> <b><i>run.sh:</i></b> a script to run a single simulation and clean after</li>
+  <li> <b><i>color.py:</i></b> a module used to print colored lines in python</li>
+  <li> <b><i>color.pyc:</i></b> compiled bytecode of the imported module <i>color</i></li>
 </ul>
 
 <h2>How to Run the code</h2>
 
 <div>The codebase of the system is written in python2.7 and Modellica 1.17.0 so you have to install both. The OMPython interface that allow the scripts to to communicate with OpenModelica is also required and can be install via pip: </div>
-<code>pip install OMPython</code>
-<br><br>
+<code>pip install OMPython</code><br>
+<br>
 
 <div>To run multiple simulations over an arbitrary number of patient and verify that the pump model is correct:</div> 
-<code>python verify.py </code>
+<code>python verify.py </code><br>
 <br>
 <div>or in some newer debian based distribution</div>
-<code>python2 verify.py </code>
+<code>python2 verify.py </code><br>
 <br>
 
 <div>To run a single simulation:</div> 
