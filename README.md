@@ -31,7 +31,7 @@ collects information from a sensor and controls a pump that delivers a controlle
 
 <h2>How to Run the code</h2>
 
-<div>The system codebase is written in python2.7 and Modelica 1.17.0 so they must both be installed. It is possible to install OpenModelica at <a href="https://openmodelica.org/">OpenModelica 1.17</a>. 
+<div>The system codebase is written in python2.7 and Modelica 1.17.0 so they must both be installed. It is possible to install OpenModelica at <a href="https://openmodelica.org/">OpenModelica 1.17</a>. The project was compiled and tested on a Debian-based distribution, so it is suggested to try it in a similar environment. Correct operation on other distributions is not guaranteed,in particular the system cannot be run on windows since it uses the  forward slash to define the filespaths. <br>
 The OMPython interface is also needed which allows scripts to communicate with OpenModelica and can be installed via pip: </div>
 <code>pip install OMPython</code><br>
 <br>
