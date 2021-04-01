@@ -1,4 +1,6 @@
 block Monitor_Average
+/* Check if the patient's average values 
+at the end of the simulations are good*/
 
 InputReal glucose_from_patient;     // amount of glucose of the patient
 InputReal insulin_from_pump;        // amount of insuline of the pump

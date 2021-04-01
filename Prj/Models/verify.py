@@ -43,15 +43,15 @@ lower_limit = 70
 # To prevent overwriting in parameters.txt
 pre_average = 0         # store the glucose average value in the previous simulation...
 enable_sleep = False    # send a signal to trigger the delay...
-delay = 0.6             # only if pre_average is equal to average...
+delay = 0.8             # only if pre_average is equal to average...
                         # which means the patient has been duplicated
 
 
 # Generate an Output.txt files
 os.system("echo Output >> Output/Output_Verify/Output"+str(num_of_patient)+".txt")
 
-# Note: if you want to store the experimental results in Output.txt 
-# set the following variable to Fals to not save the outputs
+# Note: if you do not want to store the experimental results in Output.txt 
+# set the following variable to False 
 output = True
 
 # Start counting time to run n Simulation
@@ -134,7 +134,7 @@ for i in range(0, num_of_patient):   # Start multiple simulation
     os.system("./System -s=rungekutta -overrideFile=parameters.txt > log")
 
     # Apply the delay only in case there are some duplicate patients
-    if (delay >= 0.8): 
+    if (delay >= 1.0): 
         prettyln("Delay: "+str(delay)+"s\n", 'r')
         time.sleep(delay)  
 

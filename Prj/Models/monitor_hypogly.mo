@@ -1,4 +1,6 @@
 block Monitor_Hypogly
+/* Check for hypoglycemic patient,
+controller triggered by a low level of glucose*/
 
 InputReal glucose_from_patient;     // amount of glucose of the patient
 

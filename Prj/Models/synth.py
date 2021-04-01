@@ -37,7 +37,7 @@ os.system("echo Output >> Output/Output_Synth/Output"+str(num_of_patient)+".txt"
 # To prevent overwriting in parameters.txt
 pre_insulin = 0        # store the insuline value in the previous simulation...
 enable_sleep = False    # send a signal to trigger the delay...
-delay = 0.6             # only if pre_insuline is equal to insuline...
+delay = 0.8             # only if pre_insuline is equal to insuline...
                         # which means the values for a or b have been duplicated
 
 # Start counting time to run n Simulation
@@ -151,7 +151,7 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
         os.system("./System -s=rungekutta -overrideFile=parameters.txt > log")
 
         # Apply the delay only in case there are some duplicate values of 'a' or 'b'
-        if (delay >= 0.8): 
+        if (delay >= 1.0): 
             prettyln("Delay: "+str(delay)+"s\n", 'r')
             time.sleep(delay)
 
