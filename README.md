@@ -3,7 +3,7 @@
 collects information from a sensor and controls a pump that delivers a controlled dose of insulin to a user. People who suffer from diabetes use the system.</div>
 
 <h2>Goals of the project</h2>
-<div>The problem with this treatment is that the level of insulin required does not just depend on the blood glucose level but also on the time of the last insulin injection. The goal of the project was to build a system capable of simulating the work of a real insulin pump on an arbitrary number of <i>in-silico</i> patients.</div> More information on the project requirements and the materials used to simulate a human patient can be found in the Requirement directory.
+<div>The problem with this treatment is that the level of insulin required does not just depend on the blood glucose level but also on the time of the last insulin injection. The goal of the project was to build a system capable of simulating the work of a real insulin pump on an arbitrary number of <i>in-silico</i> patients. More information on the project requirements and the materials used to simulate a human patient can be found in the Requirement directory.</div> 
 
 <h2>What is inside Prj/Models</h2>
 <h3>The main files inside Models are Modelica files and two python scripts:</h3> 
