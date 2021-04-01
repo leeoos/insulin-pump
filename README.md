@@ -46,7 +46,7 @@ The OMPython interface is also needed which allows scripts to communicate with O
 <code>python2 verify.py </code><br>
 <br>
 
-<div>Note: After running the script, the experimental results will be stored in an output file within the automatically generated Output/Output_Veryfy directory in Models. The output file will be marked with the number of patients tested and overwritten when the script is rerun. To change the number of patients to be tested, in verify.py change num_of_patient.</div> 
+<div>Note: After running the script, the experimental results will be stored in an output file within the automatically generated Output/Output_Veryfy directory in Models. The output file will be marked with the number of patients tested and overwritten when the script is rerun. To change the number of patients to be tested, in verify.py change num_of_patient.</div><br>
 
 <div>To run multiple simulations on an arbitrary number of patients and find the best parameters for each of them so that the pump injects the minimum dose needed to cure it:</div> 
 <code>python synth.py </code><br>
@@ -55,7 +55,7 @@ The OMPython interface is also needed which allows scripts to communicate with O
 <code>python2 synth.py </code><br>
 <br>
 
-<div>Note: After running the script, the experimental results will be stored in an output file within the automatically generated Output/Output_Synth directory in Models. The output file will be marked with the number of patients tested and overwritten when the script is rerun. To change the number of patients to be tested, in synth.py change num_of_patient.</div> 
+<div>Note: After running the script, the experimental results will be stored in an output file within the automatically generated Output/Output_Synth directory in Models. The output file will be marked with the number of patients tested and overwritten when the script is rerun. To change the number of patients to be tested, in synth.py change num_of_patient.</div><br>
 
 <div>To run a single simulation on a standard non-hypoglycemic patient:</div> 
 <code>omc run.mos</code> <br>
