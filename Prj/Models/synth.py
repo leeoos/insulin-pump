@@ -159,7 +159,7 @@ for i in range(0, num_of_patient):   # Start multiple simulation for n patients
         fail_pump = omc.sendExpression("val(mo_pu.controller,"+str(float(sim_time))+", \"System_res.mat\")")     
         
         if (fail_pump) : 
-            println("Pump Fail Simulation Ended \n", 'r')              
+            prettyln("Pump Fail Simulation Ended \n", 'r')              
             print fail_pump
             break
         

@@ -22,7 +22,7 @@ algorithm
 
 /* decide the amount of insulin to be injected based on 
 the patient's glucose and the previously injected insulin*/
-when sample(0, T) then
+when sample(100, T) then
 
 z := pre(z) + T*err;
 
