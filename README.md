@@ -14,7 +14,7 @@ collects information from a sensor and controls a pump that delivers a controlle
   <li> <b><i>rag_meal.mo:</i></b> a model that simulate the rate of meal driven glucose appearance</li>
   <li> <b><i>monitor_pump.mo:</i></b> a monitor to check if the pump is working correctly during the simulation</li>
   <li> <b><i>monitor_average.mo:</i></b> a monitor to check if the patient's average values at the end of the simulations are good</li>
-   <li> <b><i>monitor_hipogli.mo:</i></b> a monitor to check if the patient is hypoglycemic</li>
+   <li> <b><i>monitor_hypogly.mo:</i></b> a monitor to check if the patient is hypoglycemic</li>
   <li> <b><i>connectors.mo:</i></b> to define the type of connectors </li>
   <li> <b><i>System.mo:</i></b> to link all classes and monitors together</li>
   <li> <b><i>run.mos:</i></b> to build the model and run a single simulation</li>
